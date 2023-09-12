@@ -48,22 +48,10 @@ var criminals = new List<Criminal>
         IsArrested = false
     }
 };
-
-var searchCriminal =
+/*var searchCriminal =
     from c
         in criminals
-    select new { c.Height, c.Weight, c.Nationality };
-
-return;
-
-
-/*Задача:
-У нас есть список всех преступников.
-Вашей программой будут пользоваться детективы.
-У детектива запрашиваются данные (рост, вес, национальность)
-и детективу выводятся все преступники которые подходят под эти параметры,
-но уже заключенные под стражу выводиться не должны.*/
-
+    select new { c.Height, c.Weight, c.Nationality };*/
 
 var exit = false;
 
@@ -71,8 +59,8 @@ while (!exit)
 {
     ShowMenu();
 
-    Console.Write("Enter your choice: ");
-    var choice = Console.ReadLine();
+    /*Console.Write("Enter your choice detective: ");
+    var choice = Console.ReadLine();*/
 
     switch (choice)
     {
@@ -90,8 +78,10 @@ while (!exit)
             break;
     }
 
-    Console.WriteLine();
+    Console.WriteLine("Good hunting, detective.");
 }
+
+return;
 
 void ShowMenu()
 {
@@ -121,13 +111,11 @@ List<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 
     return arrestedPeople;
 }
-
 void ShowArrestedPeople()
 {
     Console.WriteLine("List of arrested people:");
     ArrestedPeople(criminals!);
 }
-
 
 List<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
@@ -138,7 +126,6 @@ List<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weig
 
     return findCriminal.ToList();
 }
-
 void SearchCriminal()
 {
     Console.WriteLine("Search for a criminal:");
