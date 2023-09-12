@@ -49,11 +49,6 @@ var criminals = new List<Criminal>
     }
 };
 
-/*var searchCriminal =
-    from c
-        in criminals
-    select new { c.Height, c.Weight, c.Nationality };*/
-
 var exit = false;
 while (!exit)
 {
@@ -80,6 +75,7 @@ while (!exit)
             break;
     }
 }
+
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();
@@ -88,10 +84,11 @@ return;
 
 void ShowMenu()
 {
-    Console.WriteLine("Menu:");
-    Console.WriteLine("1. Show arrested people");
-    Console.WriteLine("2. Search for a criminal");
+    Console.WriteLine("--------< Menu >--------");
+    Console.WriteLine("1. Show arrested people.");
+    Console.WriteLine("2. Search for a criminal.");
     Console.WriteLine("3. Exit");
+    Console.WriteLine("------------------------");
 }
 
 string UserInput(string message)
@@ -111,7 +108,6 @@ List<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
             arrestedPeople.Add(person);
         }
     }
-
     return arrestedPeople;
 }
 void ShowArrestedPeople()
