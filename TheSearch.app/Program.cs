@@ -108,7 +108,7 @@ int UserInput(string message)
     return int.Parse(input!);
 }
 
-List<Criminal> ArrestedPeople(List<Criminal> criminal)
+List<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 {
     var arrestedPeople = new List<Criminal>();
     foreach (var person in criminal)
@@ -118,21 +118,25 @@ List<Criminal> ArrestedPeople(List<Criminal> criminal)
             arrestedPeople.Add(person);
         }
     }
+
     return arrestedPeople;
 }
-
 
 void ShowArrestedPeople()
 {
     Console.WriteLine("List of arrested people:");
-    // var arrestedPeople = new List<Criminal>();
-    // foreach (var person in criminals!)
-    // {
-    //     if ()
-    //     {
-    //         
-    //     }
-    // }
+    ArrestedPeople(criminals!);
+}
+
+
+List<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+{
+    var findCriminal =
+        from c in criminals
+        where c.Height == height && c.Weight == weight && c.Nationality == nationality
+        select c;
+
+    return findCriminal.ToList();
 }
 
 void SearchCriminal()
@@ -146,4 +150,6 @@ void SearchCriminal()
 
     Console.Write("Enter nationality: ");
     var nationality = Console.ReadLine() ?? throw new InvalidOperationException("Invalid nationality.");
+
+    FindCriminal(criminals!, height, weight, nationality);
 }
