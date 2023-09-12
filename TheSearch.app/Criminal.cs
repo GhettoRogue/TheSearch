@@ -7,10 +7,15 @@ public record Criminal
     public int Height { get; init; }
     public int Weight { get; init; }
     public string Nationality { get; init; }
-    
+    public bool IsArrested { get; init; }
+
+    public bool IfArrested()
+    {
+        return IsArrested;
+    }
 
     /*public bool  IsArrested()
     {
-        
+
     }*/
 }
