@@ -54,9 +54,6 @@ while (!exit)
 {
     ShowMenu();
 
-    /*Console.Write("Enter your choice detective: ");
-    var choice = Console.ReadLine();*/
-    
     switch (UserInput("Enter your choice detective:"))
     {
         case "1":
@@ -80,7 +77,6 @@ Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();
 
-
 return;
 
 void ShowMenu()
@@ -92,55 +88,72 @@ void ShowMenu()
     Console.WriteLine("------------------------");
 }
 
-string UserInput(string message)
-{
-    Console.Write(message);
-    var input = Console.ReadLine();
-    return (input!);
-}
-
 IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 {
-    var arrested = new List<Criminal>();
-    foreach (var person in criminal)
-    {
-        if (person.IsArrested)
-        {
-            arrested.Add(person);
-        }
-    }
+    var arrested = 
+        from person in criminal
+        where person.IsArrested
+        select person;
+
     return arrested;
 }
+
 void ShowArrestedPeople()
 {
     Console.WriteLine("List of arrested people:");
-    ArrestedPeople(criminals!);
+    var arrestedPeople = ArrestedPeople(criminals);
+    foreach (var criminal in arrestedPeople)
+    {
+        Console.WriteLine($"First Name: {criminal.FirstName}" + 
+                          $",Last Name: {criminal.Lastname}," +
+                          $" Height: {criminal.Height}," +
+                          $" Weight: {criminal.Weight}," +
+                          $" Nationality: {criminal.Nationality}");
+    }
 }
 
-List<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
-    var find = FindCriminal(criminals!, height, weight, nationality);
-    foreach (var c in find)
+    var find = 
+        from c in criminal
+        where c.Height == height && c.Weight == weight && c.Nationality == nationality
+        select c;
+
+    var findCriminal = find.ToList();
+    Console.WriteLine("The criminal was found using this data: ");
+    foreach (var c in findCriminal)
     {
-        Console.WriteLine($" First Name: {c.FirstName}," +
+        Console.WriteLine($"First Name: {c.FirstName}," +
                           $" Last Name: {c.Lastname}," +
                           $" Height: {c.Height}," +
                           $" Weight: {c.Weight}," +
                           $" Nationality: {c.Nationality}");
     }
-    return find.ToList();
+
+    return findCriminal;
 }
+
 void SearchCriminal()
 {
     Console.WriteLine("Search for a criminal:");
     Console.Write("Enter height: ");
-    var height = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException("Invalid height."));
+    int height;
+    while (!int.TryParse(Console.ReadLine(), out height))
+    {
+        Console.WriteLine("Invalid height. Please try again.");
+        Console.Write("Enter height: ");
+    }
 
     Console.Write("Enter weight: ");
-    var weight = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException("Invalid weight."));
+    int weight;
+    while (!int.TryParse(Console.ReadLine(), out weight))
+    {
+        Console.WriteLine("Invalid weight. Please try again.");
+        Console.Write("Enter weight: ");
+    }
 
     Console.Write("Enter nationality: ");
     var nationality = Console.ReadLine() ?? throw new InvalidOperationException("Invalid nationality.");
 
-    FindCriminal(criminals!, height, weight, nationality);
+    FindCriminal(criminals, height, weight, nationality);
 }
