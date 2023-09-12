@@ -97,7 +97,7 @@ string UserInput(string message)
 
 IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 {
-    var arrested = 
+    var arrested =
         from person in criminal
         where person.IsArrested
         select person;
@@ -111,7 +111,7 @@ void ShowArrestedPeople()
     var arrestedPeople = ArrestedPeople(criminals);
     foreach (var criminal in arrestedPeople)
     {
-        Console.WriteLine($"First Name: {criminal.FirstName}" + 
+        Console.WriteLine($"First Name: {criminal.FirstName}" +
                           $",Last Name: {criminal.Lastname}," +
                           $" Height: {criminal.Height}," +
                           $" Weight: {criminal.Weight}," +
@@ -121,7 +121,7 @@ void ShowArrestedPeople()
 
 IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
-    var find = 
+    var find =
         from c in criminal
         where c.Height == height && c.Weight == weight && c.Nationality == nationality
         select c;
