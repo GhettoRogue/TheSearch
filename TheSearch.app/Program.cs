@@ -48,21 +48,21 @@ var criminals = new List<Criminal>
         IsArrested = false
     }
 };
+
 /*var searchCriminal =
     from c
         in criminals
     select new { c.Height, c.Weight, c.Nationality };*/
 
 var exit = false;
-
 while (!exit)
 {
     ShowMenu();
 
     /*Console.Write("Enter your choice detective: ");
     var choice = Console.ReadLine();*/
-
-    switch (choice)
+    
+    switch (UserInput("Enter your choice detective:"))
     {
         case "1":
             ShowArrestedPeople();
@@ -74,12 +74,15 @@ while (!exit)
             exit = true;
             break;
         default:
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Invalid choice. Please try again.");
+            Console.ResetColor();
             break;
     }
-
-    Console.WriteLine("Good hunting, detective.");
 }
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("Good hunting, detective.");
+Console.ResetColor();
 
 return;
 
@@ -91,11 +94,11 @@ void ShowMenu()
     Console.WriteLine("3. Exit");
 }
 
-int UserInput(string message)
+string UserInput(string message)
 {
     Console.Write(message);
     var input = Console.ReadLine();
-    return int.Parse(input!);
+    return (input!);
 }
 
 List<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
