@@ -13,9 +13,4 @@ public record Criminal
     {
         return IsArrested;
     }
-
-    /*public bool  IsArrested()
-    {
-
-    }*/
 }

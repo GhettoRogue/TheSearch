@@ -108,17 +108,18 @@ int UserInput(string message)
     return int.Parse(input!);
 }
 
-List<Criminal> ArrestedPeople (criminals)
+List<Criminal> ArrestedPeople(List<Criminal> criminal)
 {
     var arrestedPeople = new List<Criminal>();
-    foreach (var person in criminals)
+    foreach (var person in criminal)
     {
-        if ()
+        if (person.IsArrested)
         {
             arrestedPeople.Add(person);
         }
     }
-}return  
+    return arrestedPeople;
+}
 
 
 void ShowArrestedPeople()
@@ -132,7 +133,6 @@ void ShowArrestedPeople()
     //         
     //     }
     // }
-
 }
 
 void SearchCriminal()
@@ -146,5 +146,4 @@ void SearchCriminal()
 
     Console.Write("Enter nationality: ");
     var nationality = Console.ReadLine() ?? throw new InvalidOperationException("Invalid nationality.");
-    
 }
