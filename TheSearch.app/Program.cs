@@ -88,6 +88,13 @@ void ShowMenu()
     Console.WriteLine("------------------------");
 }
 
+string UserInput(string message)
+{
+    Console.Write(message);
+    var input = Console.ReadLine();
+    return input!;
+}
+
 IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 {
     var arrested = 
