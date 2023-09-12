@@ -80,6 +80,7 @@ Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();
 
+
 return;
 
 void ShowMenu()
@@ -98,17 +99,17 @@ string UserInput(string message)
     return (input!);
 }
 
-List<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
+IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
 {
-    var arrestedPeople = new List<Criminal>();
+    var arrested = new List<Criminal>();
     foreach (var person in criminal)
     {
         if (person.IsArrested)
         {
-            arrestedPeople.Add(person);
+            arrested.Add(person);
         }
     }
-    return arrestedPeople;
+    return arrested;
 }
 void ShowArrestedPeople()
 {
@@ -118,12 +119,16 @@ void ShowArrestedPeople()
 
 List<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
-    var findCriminal =
-        from c in criminals
-        where c.Height == height && c.Weight == weight && c.Nationality == nationality
-        select c;
-
-    return findCriminal.ToList();
+    var find = FindCriminal(criminals!, height, weight, nationality);
+    foreach (var c in find)
+    {
+        Console.WriteLine($" First Name: {c.FirstName}," +
+                          $" Last Name: {c.Lastname}," +
+                          $" Height: {c.Height}," +
+                          $" Weight: {c.Weight}," +
+                          $" Nationality: {c.Nationality}");
+    }
+    return find.ToList();
 }
 void SearchCriminal()
 {
