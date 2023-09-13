@@ -5,7 +5,7 @@ var criminals = new List<Criminal>
     new()
     {
         FirstName = "John",
-        Lastname = "Smith",
+        LastName = "Smith",
         Height = 160,
         Weight = 50,
         Nationality = "Indian",
@@ -14,7 +14,7 @@ var criminals = new List<Criminal>
     new()
     {
         FirstName = "Jane",
-        Lastname = "Johnson",
+        LastName = "Johnson",
         Height = 168,
         Weight = 56,
         Nationality = "Canadian",
@@ -23,7 +23,7 @@ var criminals = new List<Criminal>
     new()
     {
         FirstName = "Michael",
-        Lastname = "Brown",
+        LastName = "Brown",
         Height = 183,
         Weight = 60,
         Nationality = "Australian",
@@ -32,7 +32,7 @@ var criminals = new List<Criminal>
     new()
     {
         FirstName = "William",
-        Lastname = "Wilson",
+        LastName = "Wilson",
         Height = 190,
         Weight = 90,
         Nationality = "Scottish",
@@ -41,7 +41,7 @@ var criminals = new List<Criminal>
     new()
     {
         FirstName = "Sophia",
-        Lastname = "Clark",
+        LastName = "Clark",
         Height = 160,
         Weight = 51,
         Nationality = "South African",
@@ -112,7 +112,7 @@ void ShowArrestedPeople()
     foreach (var criminal in arrestedPeople)
     {
         Console.WriteLine($"First Name: {criminal.FirstName}" +
-                          $",Last Name: {criminal.Lastname}," +
+                          $",Last Name: {criminal.LastName}," +
                           $" Height: {criminal.Height}," +
                           $" Weight: {criminal.Weight}," +
                           $" Nationality: {criminal.Nationality}");
@@ -131,7 +131,7 @@ IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, i
     foreach (var c in findCriminal)
     {
         Console.WriteLine($"First Name: {c.FirstName}," +
-                          $" Last Name: {c.Lastname}," +
+                          $" Last Name: {c.LastName}," +
                           $" Height: {c.Height}," +
                           $" Weight: {c.Weight}," +
                           $" Nationality: {c.Nationality}");
