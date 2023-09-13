@@ -8,9 +8,5 @@ public record Criminal
     public int Weight { get; init; }
     public string Nationality { get; init; }
     public bool IsArrested { get; init; }
-
-    public bool IfArrested()
-    {
-        return IsArrested;
-    }
+    
 }
