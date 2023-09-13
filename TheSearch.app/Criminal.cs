@@ -2,11 +2,11 @@
 
 public record Criminal
 {
-    public string FirstName;
-    public string Lastname;
+    public string? FirstName;
+    public string? Lastname;
     public int Height;
     public int Weight;
-    public string Nationality;
+    public string? Nationality;
     public bool IsArrested;
 
 }
