@@ -130,9 +130,7 @@ IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, i
     Console.WriteLine("The criminal was found using this data: ");
     foreach (var c in findCriminal)
     {
-        Console.WriteLine($"First Name: {c.FirstName}," +
-                          $" Last Name: {c.LastName}," +
-                          $" Height: {c.Height}," +
+        Console.WriteLine($" Height: {c.Height}," +
                           $" Weight: {c.Weight}," +
                           $" Nationality: {c.Nationality}");
     }
