@@ -124,7 +124,6 @@ void FindCriminal(int height, int weight, string? nationality)
 void SearchCriminal()
 {
     Console.WriteLine("Search for a criminal:");
-    Console.Write("Enter height: ");
     int height;
     while (true)
     {
@@ -156,9 +155,7 @@ void SearchCriminal()
         {
             break;
         }
-/*
-        Console.WriteLine("Invalid nationality.. Please try again.");
-*/
+        Console.WriteLine("Invalid nationality. Please try again.");
     }
     
     FindCriminal(height, weight, nationality);
