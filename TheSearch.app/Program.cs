@@ -119,14 +119,20 @@ void ShowArrestedPeople()
     }
 }
 
-void FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+IEnumerable<Criminal> Find(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
     var find =
         from c in criminal
         where c.Height == height && c.Weight == weight && c.Nationality == nationality
         select c;
+    return find;
+}
 
-    var findCriminal = find.ToList();
+void FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+{
+    Find(criminals,height,weight,nationality);
+    var findCriminal = Find(criminals,height,weight,nationality).ToList();
+    
     Console.WriteLine("The criminal was found using this data: ");
     foreach (var c in findCriminal)
     {
