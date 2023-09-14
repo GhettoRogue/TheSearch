@@ -109,7 +109,7 @@ void ShowArrestedPeople()
     }
 }
 
-void FindCriminal(int height, int weight, string nationality)
+void FindCriminal(int height, int weight, string? nationality)
 {
     var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
     Console.WriteLine("The criminal was found using this data: ");
@@ -126,23 +126,41 @@ void SearchCriminal()
     Console.WriteLine("Search for a criminal:");
     Console.Write("Enter height: ");
     int height;
-    while (!int.TryParse(Console.ReadLine(), out height))
+    while (true)
     {
-        Console.WriteLine("Invalid height. Please try again.");
         Console.Write("Enter height: ");
+        if (int.TryParse(Console.ReadLine(), out height))
+        {
+            break;
+        }
+        Console.WriteLine("Invalid height. Please try again.");
     }
 
-    Console.Write("Enter weight: ");
     int weight;
-    while (!int.TryParse(Console.ReadLine(), out weight))
+    while (true)
     {
-        Console.WriteLine("Invalid weight. Please try again.");
         Console.Write("Enter weight: ");
+        if (int.TryParse(Console.ReadLine(), out weight))
+        {
+            break;
+        }
+        Console.WriteLine("Invalid weight. Please try again.");
     }
 
-    Console.Write("Enter nationality: ");
-    var nationality = Console.ReadLine() ?? throw new InvalidOperationException("Invalid nationality.");
-
+    string? nationality;
+    while (true) // TODO
+    {
+        Console.Write("Enter nationality: ");
+        nationality = Console.ReadLine();
+        if (!string.IsNullOrEmpty(nationality))
+        {
+            break;
+        }
+/*
+        Console.WriteLine("Invalid nationality.. Please try again.");
+*/
+    }
+    
     FindCriminal(height, weight, nationality);
 }
 
@@ -156,7 +174,7 @@ IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
     return arrested;
 }
 
-IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, int height, int weight, string? nationality)
 {
     var find =
         from c in criminal
