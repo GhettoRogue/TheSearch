@@ -79,15 +79,6 @@ Console.ResetColor();
 
 return;
 
-void ShowMenu()
-{
-    Console.WriteLine("--------< Menu >--------");
-    Console.WriteLine("1. Show arrested people.");
-    Console.WriteLine("2. Search for a criminal.");
-    Console.WriteLine("3. Exit");
-    Console.WriteLine("------------------------");
-}
-
 string UserInput(string message)
 {
     Console.Write(message);
@@ -95,14 +86,13 @@ string UserInput(string message)
     return input!;
 }
 
-IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
+void ShowMenu()
 {
-    var arrested =
-        from person in criminal
-        where person.IsArrested
-        select person;
-
-    return arrested;
+    Console.WriteLine("--------< Menu >--------");
+    Console.WriteLine("1. Show arrested people.");
+    Console.WriteLine("2. Search for a criminal.");
+    Console.WriteLine("3. Exit");
+    Console.WriteLine("------------------------");
 }
 
 void ShowArrestedPeople()
@@ -119,24 +109,13 @@ void ShowArrestedPeople()
     }
 }
 
-IEnumerable<Criminal> Find(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+void FindCriminal(int height, int weight, string nationality)
 {
-    var find =
-        from c in criminal
-        where c.Height == height && c.Weight == weight && c.Nationality == nationality
-        select c;
-    return find;
-}
-
-void FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
-{
-    Find(criminals,height,weight,nationality);
-    var findCriminal = Find(criminals,height,weight,nationality).ToList();
-    
+    var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
     Console.WriteLine("The criminal was found using this data: ");
     foreach (var c in findCriminal)
     {
-        Console.WriteLine($" Height: {c.Height}," +
+        Console.WriteLine($"Height: {c.Height}," +
                           $" Weight: {c.Weight}," +
                           $" Nationality: {c.Nationality}");
     }
@@ -164,5 +143,25 @@ void SearchCriminal()
     Console.Write("Enter nationality: ");
     var nationality = Console.ReadLine() ?? throw new InvalidOperationException("Invalid nationality.");
 
-    FindCriminal(criminals, height, weight, nationality);
+    FindCriminal(height, weight, nationality);
+}
+
+IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
+{
+    var arrested =
+        from person in criminal
+        where person.IsArrested
+        select person;
+
+    return arrested;
+}
+
+IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+{
+    var find =
+        from c in criminal
+        where c.Height == height && c.Weight == weight && c.Nationality == nationality
+        select c;
+    
+    return find;
 }
