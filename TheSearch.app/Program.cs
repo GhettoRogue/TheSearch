@@ -119,7 +119,7 @@ void ShowArrestedPeople()
     }
 }
 
-IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
+void FindCriminal(IEnumerable<Criminal> criminal, int height, int weight, string nationality)
 {
     var find =
         from c in criminal
@@ -134,8 +134,6 @@ IEnumerable<Criminal> FindCriminal(IEnumerable<Criminal> criminal, int height, i
                           $" Weight: {c.Weight}," +
                           $" Nationality: {c.Nationality}");
     }
-
-    return findCriminal;
 }
 
 void SearchCriminal()
