@@ -155,7 +155,8 @@ void SearchCriminal()
         {
             break;
         }
-        Console.WriteLine("Invalid nationality. Please try again.");
+        throw new FormatException("Invalid nationality. Please try again.");
+        // Console.WriteLine("Invalid nationality. Please try again.");
     }
     
     FindCriminal(height, weight, nationality);
