@@ -132,6 +132,7 @@ void SearchCriminal()
         {
             break;
         }
+
         Console.WriteLine("Invalid height. Please try again.");
     }
 
@@ -143,22 +144,31 @@ void SearchCriminal()
         {
             break;
         }
+
         Console.WriteLine("Invalid weight. Please try again.");
     }
 
     string? nationality;
-    while (true) // TODO
+    while (true) 
     {
         Console.Write("Enter nationality: ");
         nationality = Console.ReadLine();
-        if (!string.IsNullOrEmpty(nationality))
+
+        /*if (!string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter))
+        {
+            break;
+        }*/
+        if (nationality != null && nationality.All(char.IsLetter))
         {
             break;
         }
-        throw new FormatException("Invalid nationality. Please try again.");
+        
+        
+        Console.WriteLine("Invalid nationality. Please try again.");
+        // throw new FormatException("Invalid nationality. Please try again.");
         // Console.WriteLine("Invalid nationality. Please try again.");
     }
-    
+
     FindCriminal(height, weight, nationality);
 }
 
@@ -172,12 +182,13 @@ IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
     return arrested;
 }
 
-IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, int height, int weight, string? nationality)
+IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, int height, int weight,
+    string? nationality)
 {
     var find =
         from c in criminal
         where c.Height == height && c.Weight == weight && c.Nationality == nationality
         select c;
-    
+
     return find;
 }
