@@ -144,8 +144,10 @@ void SearchCriminal()
         {
             break;
         }
-
+        
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Invalid weight. Please try again.");
+        Console.ResetColor();
     }
 
     string? nationality;
