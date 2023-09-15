@@ -132,8 +132,10 @@ void SearchCriminal()
         {
             break;
         }
-
+        
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Invalid height. Please try again.");
+        Console.ResetColor();
     }
 
     int weight;
