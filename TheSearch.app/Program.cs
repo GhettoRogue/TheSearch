@@ -89,7 +89,7 @@ do
         case "2":
             SearchCriminal();
             break;
-        case "3":
+        case "0":
             exit = true;
             break;
         default:
@@ -119,7 +119,7 @@ void ShowMenu()
     Console.WriteLine("--------< Menu >--------");
     Console.WriteLine("1. Show arrested people.");
     Console.WriteLine("2. Search for a criminal.");
-    Console.WriteLine("3. Exit");
+    Console.WriteLine("0. Exit");
     Console.WriteLine("------------------------");
 }
 
