@@ -162,9 +162,10 @@ void SearchCriminal()
         {
             break;
         }
-        
-        
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Invalid nationality. Please try again.");
+        Console.ResetColor();
         // throw new FormatException("Invalid nationality. Please try again.");
         // Console.WriteLine("Invalid nationality. Please try again.");
     }
