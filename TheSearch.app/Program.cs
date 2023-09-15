@@ -76,34 +76,8 @@ while (!exit)
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();*/
-var exit = false;
-do
-{
-    ShowMenu();
 
-    switch (UserInput("Enter your choice detective:"))
-    {
-        case "1":
-            ShowArrestedPeople();
-            break;
-        case "2":
-            SearchCriminal();
-            break;
-        case "0":
-            exit = true;
-            break;
-        default:
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid choice. Please try again.");
-            Console.ResetColor();
-            break;
-    }
-} while (!exit);
-
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("Good hunting, detective.");
-Console.ResetColor();
-
+DetectiveMenu();
 
 return;
 
@@ -112,6 +86,37 @@ string UserInput(string message)
     Console.Write(message);
     var input = Console.ReadLine();
     return input!;
+}
+
+void DetectiveMenu()
+{
+    var exit = false;
+    do
+    {
+        ShowMenu();
+
+        switch (UserInput("Enter your choice detective:"))
+        {
+            case "1":
+                ShowArrestedPeople();
+                break;
+            case "2":
+                SearchCriminal();
+                break;
+            case "0":
+                exit = true;
+                break;
+            default:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid choice. Please try again.");
+                Console.ResetColor();
+                break;
+        }
+    } while (!exit);
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("Good hunting, detective.");
+    Console.ResetColor(); 
 }
 
 void ShowMenu()
