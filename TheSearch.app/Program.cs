@@ -142,18 +142,6 @@ void ShowArrestedPeople()
     }
 }
 
-void FindCriminal(int height, int weight, string? nationality)
-{
-    var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
-    Console.WriteLine("The criminal was found using this data: ");
-    foreach (var c in findCriminal)
-    {
-        Console.WriteLine($"Height: {c.Height}," +
-                          $" Weight: {c.Weight}," +
-                          $" Nationality: {c.Nationality}");
-    }
-}
-
 void SearchCriminal()
 {
     Console.WriteLine("Search for a criminal:");
@@ -208,6 +196,18 @@ void SearchCriminal()
     }
 
     FindCriminal(height, weight, nationality);
+}
+
+void FindCriminal(int height, int weight, string? nationality)
+{
+    var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
+    Console.WriteLine("The criminal was found using this data: ");
+    foreach (var c in findCriminal)
+    {
+        Console.WriteLine($"Height: {c.Height}," +
+                          $" Weight: {c.Weight}," +
+                          $" Nationality: {c.Nationality}");
+    }
 }
 
 IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
