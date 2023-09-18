@@ -81,12 +81,16 @@ ShowDetectiveMenu();
 
 return;
 
+#region Input
+
 string UserInput(string message)
 {
     Console.Write(message);
     var input = Console.ReadLine();
     return input!;
 }
+
+#endregion
 
 #region ShowInfo
 
