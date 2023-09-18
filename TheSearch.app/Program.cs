@@ -77,7 +77,7 @@ Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();*/
 
-DetectiveMenu();
+ShowDetectiveMenu();
 
 return;
 
@@ -88,7 +88,9 @@ string UserInput(string message)
     return input!;
 }
 
-void DetectiveMenu()
+#region ShowInfo
+
+void ShowDetectiveMenu()
 {
     var exit = false;
     do
@@ -197,6 +199,8 @@ void SearchCriminal()
 
     FindCriminal(height, weight, nationality);
 }
+
+#endregion
 
 void FindCriminal(int height, int weight, string? nationality)
 {
