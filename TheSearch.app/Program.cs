@@ -202,6 +202,8 @@ void SearchCriminal()
 
 #endregion
 
+#region FindInfo
+
 void FindCriminal(int height, int weight, string? nationality)
 {
     var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
@@ -234,3 +236,5 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
 
     return find;
 }
+
+#endregion
