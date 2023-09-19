@@ -2,6 +2,7 @@
 
 public record Criminal
 {
+    public Guid Id;
     public string? FirstName;
     public string? LastName;
     public int Height;
