@@ -145,7 +145,8 @@ void ShowArrestedPeople()
     var arrestedPeople = ArrestedPeople(criminals);
     foreach (var criminal in arrestedPeople)
     {
-        Console.WriteLine($"First Name: {criminal.FirstName}" +
+        Console.WriteLine($"ID criminal: {criminal.Id}" +
+                          $"First Name: {criminal.FirstName}" +
                           $",Last Name: {criminal.LastName}," +
                           $" Height: {criminal.Height}," +
                           $" Weight: {criminal.Weight}," +
