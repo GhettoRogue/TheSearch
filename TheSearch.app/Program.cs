@@ -1,9 +1,10 @@
-﻿using TheSearch.app;
+﻿
 
 var criminals = new List<Criminal>
 {
     new()
     {
+        Id = Guid.NewGuid(),
         FirstName = "John",
         LastName = "Smith",
         Height = 160,
@@ -13,6 +14,7 @@ var criminals = new List<Criminal>
     },
     new()
     {
+        Id = Guid.NewGuid(),
         FirstName = "Jane",
         LastName = "Johnson",
         Height = 168,
@@ -22,6 +24,7 @@ var criminals = new List<Criminal>
     },
     new()
     {
+        Id = Guid.NewGuid(),
         FirstName = "Michael",
         LastName = "Brown",
         Height = 183,
@@ -31,6 +34,7 @@ var criminals = new List<Criminal>
     },
     new()
     {
+        Id = Guid.NewGuid(),
         FirstName = "William",
         LastName = "Wilson",
         Height = 190,
@@ -40,6 +44,7 @@ var criminals = new List<Criminal>
     },
     new()
     {
+        Id = Guid.NewGuid(),
         FirstName = "Sophia",
         LastName = "Clark",
         Height = 160,
@@ -242,3 +247,16 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
 }
 
 #endregion
+
+public record Criminal
+{
+    public Guid Id;
+    public string? FirstName;
+    public string? LastName;
+    public int Height;
+    public int Weight;
+    public string? Nationality;
+    public bool IsArrested;
+    
+    // public string FullName => $"{FirstName} {LastName}";
+}
