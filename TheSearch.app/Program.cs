@@ -163,6 +163,21 @@ void SearchCriminal()
         Console.Write("Enter height: ");
         if (int.TryParse(Console.ReadLine(), out height))
         {
+            switch (height)
+            {
+                case <= 0:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: height must be more than 0. Please try again.");
+                    Console.ResetColor();
+                    continue;
+                case < 100:
+                case > 300:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: height must be between 100 or 300 cm");
+                    Console.ResetColor();
+                    continue;
+            }
+
             break;
         }
 
