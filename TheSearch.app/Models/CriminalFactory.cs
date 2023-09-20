@@ -1,6 +1,6 @@
-﻿namespace TheSearch.app;
+﻿namespace TheSearch.app.Models;
 
-public class CriminalFactory
+public static class CriminalFactory
 {
     public static Criminal CreateCriminal(
         string firstName,
