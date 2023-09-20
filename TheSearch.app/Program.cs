@@ -1,57 +1,14 @@
-﻿
+﻿//TODO: add something new ;)
+
+using TheSearch.app.Models;
 
 var criminals = new List<Criminal>
 {
-    new()
-    {
-        Id = Guid.NewGuid(),
-        FirstName = "John",
-        LastName = "Smith",
-        Height = 160,
-        Weight = 50,
-        Nationality = "Indian",
-        IsArrested = false
-    },
-    new()
-    {
-        Id = Guid.NewGuid(),
-        FirstName = "Jane",
-        LastName = "Johnson",
-        Height = 168,
-        Weight = 56,
-        Nationality = "Canadian",
-        IsArrested = true
-    },
-    new()
-    {
-        Id = Guid.NewGuid(),
-        FirstName = "Michael",
-        LastName = "Brown",
-        Height = 183,
-        Weight = 60,
-        Nationality = "Australian",
-        IsArrested = true
-    },
-    new()
-    {
-        Id = Guid.NewGuid(),
-        FirstName = "William",
-        LastName = "Wilson",
-        Height = 190,
-        Weight = 90,
-        Nationality = "Scottish",
-        IsArrested = true
-    },
-    new()
-    {
-        Id = Guid.NewGuid(),
-        FirstName = "Sophia",
-        LastName = "Clark",
-        Height = 160,
-        Weight = 51,
-        Nationality = "South African",
-        IsArrested = false
-    }
+    CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false),
+    CriminalFactory.CreateCriminal("Jane", "Johnson", 168, 56, "Canadian", true),
+    CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true),
+    CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true),
+    CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false)
 };
 
 /*var exit = false;
@@ -182,7 +139,7 @@ void SearchCriminal()
         }
 
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Invalid height. Please try again.");
+        Console.WriteLine("Error: invalid height. Please try again.");
         Console.ResetColor();
     }
 
@@ -192,11 +149,26 @@ void SearchCriminal()
         Console.Write("Enter weight: ");
         if (int.TryParse(Console.ReadLine(), out weight))
         {
+            switch (weight)
+            {
+                case <= 0:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: weight must be more than 0. Please try again.");
+                    Console.ResetColor();
+                    continue;
+                case < 100:
+                case > 300:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: weight must be between 100 or 300 cm");
+                    Console.ResetColor();
+                    continue;
+            }
+
             break;
         }
 
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Invalid weight. Please try again.");
+        Console.WriteLine("Error: invalid weight. Please try again.");
         Console.ResetColor();
     }
 
@@ -210,6 +182,7 @@ void SearchCriminal()
         {
             break;
         }*/
+        
         if (nationality != null && nationality.All(char.IsLetter))
         {
             break;
@@ -218,6 +191,7 @@ void SearchCriminal()
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Invalid nationality. Please try again.");
         Console.ResetColor();
+        
         // throw new FormatException("Invalid nationality. Please try again.");
         // Console.WriteLine("Invalid nationality. Please try again.");
     }
@@ -264,7 +238,7 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
 
 #endregion
 
-public record Criminal
+/*public record Criminal
 {
     public Guid Id;
     public string? FirstName;
@@ -275,4 +249,4 @@ public record Criminal
     public bool IsArrested;
     
     // public string FullName => $"{FirstName} {LastName}";
-}
+}*/

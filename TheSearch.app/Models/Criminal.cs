@@ -1,4 +1,4 @@
-﻿namespace TheSearch.app;
+﻿namespace TheSearch.app.Models;
 
 public record Criminal
 {
