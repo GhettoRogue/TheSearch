@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace TheSearch.app.VL;
+﻿namespace TheSearch.app.VL;
 
 public static class ConsoleHelper
 {

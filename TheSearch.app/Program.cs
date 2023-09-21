@@ -1,5 +1,4 @@
-﻿//TODO: add something new ;)
-
+﻿
 using TheSearch.app.Models;
 
 var criminals = new List<Criminal>
@@ -10,7 +9,6 @@ var criminals = new List<Criminal>
     CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true),
     CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false)
 };
-
 /*var exit = false;
 while (!exit)
 {
@@ -38,6 +36,7 @@ while (!exit)
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Good hunting, detective.");
 Console.ResetColor();*/
+
 
 ShowDetectiveMenu();
 
@@ -235,7 +234,6 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
 
     return find;
 }
-
 #endregion
 
 /*public record Criminal
@@ -247,6 +245,6 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
     public int Weight;
     public string? Nationality;
     public bool IsArrested;
-    
+
     // public string FullName => $"{FirstName} {LastName}";
 }*/
