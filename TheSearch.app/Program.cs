@@ -1,5 +1,4 @@
-﻿
-using TheSearch.app.Models;
+﻿using TheSearch.app.Models;
 
 var criminals = new List<Criminal>
 {
@@ -11,6 +10,7 @@ var criminals = new List<Criminal>
 };
 
 ShowDetectiveMenu();
+
 
 return;
 
