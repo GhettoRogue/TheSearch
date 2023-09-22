@@ -9,34 +9,6 @@ var criminals = new List<Criminal>
     CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true),
     CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false)
 };
-/*var exit = false;
-while (!exit)
-{
-    ShowMenu();
-
-    switch (UserInput("Enter your choice detective:"))
-    {
-        case "1":
-            ShowArrestedPeople();
-            break;
-        case "2":
-            SearchCriminal();
-            break;
-        case "3":
-            exit = true;
-            break;
-        default:
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid choice. Please try again.");
-            Console.ResetColor();
-            break;
-    }
-
-}
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("Good hunting, detective.");
-Console.ResetColor();*/
-
 
 ShowDetectiveMenu();
 
