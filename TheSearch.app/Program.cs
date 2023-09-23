@@ -20,13 +20,22 @@ void PrintLine(string message, ConsoleColor color)
     {
         Console.ForegroundColor = color;
         Console.WriteLine(message);
-        Console.ReadKey();
+        Console.ResetColor();
     }
 
 void Print(string message)
 {
     Console.WriteLine(message);
 }
+
+void PrintError(string message, ConsoleColor color)
+{
+    Console.ForegroundColor = color;
+    Print(message);
+    Console.ResetColor();
+}
+
+
 #endregion
 
 
