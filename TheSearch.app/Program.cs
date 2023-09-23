@@ -33,6 +33,11 @@ void PrintError(string message)
     PrintLine(message, ConsoleColor.Red);
 }
 
+void PrintSuccess(string message)
+{
+    PrintLine(message, ConsoleColor.Green);
+}
+
 
 #endregion
 
@@ -75,9 +80,7 @@ void ShowDetectiveMenu()
         }
     } while (!exit);
 
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Good hunting, detective.");
-    Console.ResetColor(); 
+    PrintSuccess("Good hunting, detective.");
 }
 
 void ShowMenu()
