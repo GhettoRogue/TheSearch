@@ -16,7 +16,17 @@ return;
 
 #region ConsoleHelper
 
+void PrintLine(string message, ConsoleColor color)
+    {
+        Console.ForegroundColor = color;
+        Console.WriteLine(message);
+        Console.ReadKey();
+    }
 
+void Print(string message)
+{
+    Console.WriteLine(message);
+}
 #endregion
 
 
@@ -76,7 +86,7 @@ void ShowMenu()
 
 void ShowArrestedPeople()
 {
-    Console.WriteLine("List of arrested people:");
+    Print("List of arrested people:");
     var arrestedPeople = ArrestedPeople(criminals);
     foreach (var criminal in arrestedPeople)
     {
