@@ -1,4 +1,5 @@
-﻿using TheSearch.app.Models;
+﻿using TheSearch.app;
+using TheSearch.app.Models;
 
 var criminals = new List<Criminal>
 {
@@ -11,8 +12,13 @@ var criminals = new List<Criminal>
 
 ShowDetectiveMenu();
 
-
 return;
+
+#region ConsoleHelper
+
+
+#endregion
+
 
 #region Input
 
@@ -29,6 +35,7 @@ string UserInput(string message)
 
 void ShowDetectiveMenu()
 {
+    
     var exit = false;
     do
     {
@@ -207,3 +214,7 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
     return find;
 }
 #endregion
+    
+
+
+
