@@ -28,11 +28,9 @@ void Print(string message)
     Console.WriteLine(message);
 }
 
-void PrintError(string message, ConsoleColor color)
+void PrintError(string message)
 {
-    Console.ForegroundColor = color;
-    Print(message);
-    Console.ResetColor();
+    PrintLine(message, ConsoleColor.Red);
 }
 
 
@@ -72,9 +70,7 @@ void ShowDetectiveMenu()
                 exit = true;
                 break;
             default:
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid choice. Please try again.");
-                Console.ResetColor();
+                PrintError("Invalid choice. Please try again.");
                 break;
         }
     } while (!exit);
