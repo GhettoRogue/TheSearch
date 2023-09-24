@@ -141,30 +141,23 @@ void SearchCriminal()
     int weight;
     while (true)
     {
-        Console.Write("Enter weight: ");
+        PrintWrite("Enter weight: ");
         if (int.TryParse(Console.ReadLine(), out weight))
         {
             switch (weight)
             {
                 case <= 0:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error: weight must be more than 0. Please try again.");
-                    Console.ResetColor();
+                    PrintError("Error: weight must be more than 0. Please try again.");
                     continue;
                 case < 100:
                 case > 300:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error: weight must be between 100 or 300 cm");
-                    Console.ResetColor();
+                    PrintError("Error: weight must be between 100 or 300 cm");
                     continue;
             }
 
             break;
         }
-
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Error: invalid weight. Please try again.");
-        Console.ResetColor();
+        PrintError("Error: invalid weight. Please try again.");
     }
 
     string? nationality;
