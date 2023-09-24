@@ -23,7 +23,7 @@ void PrintLine(string message, ConsoleColor color)
         Console.ResetColor();
     }
 
-void PrintWtire(string message)
+void PrintWrite(string message)
 {
     Console.Write(message);
 }
@@ -118,7 +118,7 @@ void SearchCriminal()
     int height;
     while (true)
     {
-        PrintWtire("Enter height: ");
+        PrintWrite("Enter height: ");
         if (int.TryParse(Console.ReadLine(), out height))
         {
             switch (height)
