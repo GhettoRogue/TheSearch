@@ -148,9 +148,9 @@ void SearchCriminal()
                 case <= 0:
                     PrintError("Error: weight must be more than 0. Please try again.");
                     continue;
-                case < 100:
-                case > 300:
-                    PrintError("Error: weight must be between 100 or 300 cm");
+                case < 40:
+                case > 180:
+                    PrintError("Error: weight must be between 40 or 180 cm");
                     continue;
             }
 
