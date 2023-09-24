@@ -1,5 +1,4 @@
-﻿using TheSearch.app;
-using TheSearch.app.Models;
+﻿using TheSearch.app.Models;
 
 var criminals = new List<Criminal>
 {
@@ -17,11 +16,11 @@ return;
 #region ConsoleHelper
 
 void PrintLine(string message, ConsoleColor color)
-    {
-        Console.ForegroundColor = color;
-        Console.WriteLine(message);
-        Console.ResetColor();
-    }
+{
+    Console.ForegroundColor = color;
+    Console.WriteLine(message);
+    Console.ResetColor();
+}
 
 void PrintWrite(string message)
 {
@@ -48,6 +47,10 @@ void PrintCriminal(string message)
     PrintLine(message, ConsoleColor.Blue);
 }
 
+void PrintWarning(string message)
+{
+    PrintLine(message, ConsoleColor.Yellow);
+}
 
 #endregion
 
@@ -66,7 +69,6 @@ string UserInput(string message)
 
 void ShowDetectiveMenu()
 {
-    
     var exit = false;
     do
     {
@@ -161,6 +163,7 @@ void SearchCriminal()
 
             break;
         }
+
         PrintError("Error: invalid weight. Please try again.");
     }
 
@@ -174,18 +177,18 @@ void SearchCriminal()
         {
             break;
         }*/
-        
+
         if (nationality != null && nationality.All(char.IsLetter))
         {
             break;
         }
 
         PrintError("Invalid nationality. Please try again.");
-        
+
         // throw new FormatException("Invalid nationality. Please try again.");
         // Console.WriteLine("Invalid nationality. Please try again.");
     }
-
+    
     FindCriminal(height, weight, nationality);
 }
 
@@ -196,10 +199,17 @@ void SearchCriminal()
 void FindCriminal(int height, int weight, string? nationality)
 {
     var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
-    PrintSuccess("The criminal was found using this data: ");
-    foreach (var c in findCriminal)
+    if (findCriminal.Count == 0)
     {
-        PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
+        PrintWarning("No criminal found by using these data. What would you like to do next?");
+    }
+    else if (findCriminal.Count != 0)
+    {
+        PrintSuccess("The criminal was found using this data: ");
+        foreach (var c in findCriminal)
+        {
+            PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
+        }
     }
 }
 
@@ -223,8 +233,5 @@ IEnumerable<Criminal> FindCriminalByParameters(IEnumerable<Criminal> criminal, i
 
     return find;
 }
+
 #endregion
-    
-
-
-
