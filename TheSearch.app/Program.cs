@@ -163,7 +163,7 @@ void SearchCriminal()
     string? nationality;
     while (true)
     {
-        Console.Write("Enter nationality: ");
+        PrintWrite("Enter nationality: ");
         nationality = Console.ReadLine();
 
         /*if (!string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter))
@@ -176,9 +176,7 @@ void SearchCriminal()
             break;
         }
 
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Invalid nationality. Please try again.");
-        Console.ResetColor();
+        PrintError("Invalid nationality. Please try again.");
         
         // throw new FormatException("Invalid nationality. Please try again.");
         // Console.WriteLine("Invalid nationality. Please try again.");
