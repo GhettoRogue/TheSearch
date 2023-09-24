@@ -43,6 +43,11 @@ void PrintSuccess(string message)
     PrintLine(message, ConsoleColor.Green);
 }
 
+void PrintCriminal(string message)
+{
+    PrintLine(message, ConsoleColor.Blue);
+}
+
 
 #endregion
 
@@ -194,7 +199,7 @@ void FindCriminal(int height, int weight, string? nationality)
     PrintSuccess("The criminal was found using this data: ");
     foreach (var c in findCriminal)
     {
-        Console.WriteLine($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
+        PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
     }
 }
 
