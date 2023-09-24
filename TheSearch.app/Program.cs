@@ -46,7 +46,6 @@ void PrintSuccess(string message)
 
 #endregion
 
-
 #region Input
 
 string UserInput(string message)
@@ -192,7 +191,7 @@ void SearchCriminal()
 void FindCriminal(int height, int weight, string? nationality)
 {
     var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
-    Console.WriteLine("The criminal was found using this data: ");
+    PrintSuccess("The criminal was found using this data: ");
     foreach (var c in findCriminal)
     {
         Console.WriteLine($"Height: {c.Height}," +
