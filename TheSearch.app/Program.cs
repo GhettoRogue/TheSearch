@@ -76,57 +76,57 @@ public static class Program
 
         void SearchCriminal()
         {
-            Print("Search for a criminal:");
+            ConsoleHelper.Print("Search for a criminal:");
             int height;
             while (true)
             {
-                PrintLine("Enter height: ");
+                ConsoleHelper.PrintLine("Enter height: ");
                 if (int.TryParse(Console.ReadLine(), out height))
                 {
                     switch (height)
                     {
                         case <= 0:
-                            PrintError("Error: height must be more than 0. Please try again.");
+                            ConsoleHelper.PrintError("Error: height must be more than 0. Please try again.");
                             continue;
                         case < 100:
                         case > 300:
-                            PrintError("Error: height must be between 100 or 300 cm");
+                            ConsoleHelper.PrintError("Error: height must be between 100 or 300 cm");
                             continue;
                     }
 
                     break;
                 }
 
-                PrintError("Error: invalid height. Please try again.");
+                ConsoleHelper.PrintError("Error: invalid height. Please try again.");
             }
 
             int weight;
             while (true)
             {
-                PrintLine("Enter weight: ");
+                ConsoleHelper.PrintLine("Enter weight: ");
                 if (int.TryParse(Console.ReadLine(), out weight))
                 {
                     switch (weight)
                     {
                         case <= 0:
-                            PrintError("Error: weight must be more than 0. Please try again.");
+                            ConsoleHelper.PrintError("Error: weight must be more than 0. Please try again.");
                             continue;
                         case < 40:
                         case > 180:
-                            PrintError("Error: weight must be between 40 or 180 cm");
+                            ConsoleHelper.PrintError("Error: weight must be between 40 or 180 cm");
                             continue;
                     }
 
                     break;
                 }
 
-                PrintError("Error: invalid weight. Please try again.");
+                ConsoleHelper. PrintError("Error: invalid weight. Please try again.");
             }
 
             string? nationality;
             while (true)
             {
-                PrintLine("Enter nationality: ");
+                ConsoleHelper.PrintLine("Enter nationality: ");
                 nationality = Console.ReadLine();
 
                 /*if (!string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter))
@@ -139,7 +139,7 @@ public static class Program
                     break;
                 }
 
-                PrintError("Invalid nationality. Please try again.");
+                ConsoleHelper.PrintError("Invalid nationality. Please try again.");
 
                 // throw new FormatException("Invalid nationality. Please try again.");
                 // Console.WriteLine("Invalid nationality. Please try again.");
