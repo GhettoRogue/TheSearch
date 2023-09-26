@@ -15,14 +15,14 @@ return;
 
 #region ConsoleHelper
 
-void PrintLine(string message, ConsoleColor color)
+void PrintColorLine(string message, ConsoleColor color)
 {
     Console.ForegroundColor = color;
     Console.WriteLine(message);
     Console.ResetColor();
 }
 
-void PrintWrite(string message)
+void PrintLine(string message)
 {
     Console.Write(message);
 }
@@ -34,22 +34,22 @@ void Print(string message)
 
 void PrintError(string message)
 {
-    PrintLine(message, ConsoleColor.Red);
+    PrintColorLine(message, ConsoleColor.Red);
 }
 
 void PrintSuccess(string message)
 {
-    PrintLine(message, ConsoleColor.Green);
+    PrintColorLine(message, ConsoleColor.Green);
 }
 
 void PrintCriminal(string message)
 {
-    PrintLine(message, ConsoleColor.Blue);
+    PrintColorLine(message, ConsoleColor.Blue);
 }
 
 void PrintWarning(string message)
 {
-    PrintLine(message, ConsoleColor.Yellow);
+    PrintColorLine(message, ConsoleColor.Yellow);
 }
 
 #endregion
@@ -109,12 +109,12 @@ void ShowArrestedPeople()
     var arrestedPeople = ArrestedPeople(criminals);
     foreach (var criminal in arrestedPeople)
     {
-        Console.WriteLine($"ID criminal: {criminal.Id}" +
-                          $"First Name: {criminal.FirstName}" +
-                          $",Last Name: {criminal.LastName}," +
-                          $" Height: {criminal.Height}," +
-                          $" Weight: {criminal.Weight}," +
-                          $" Nationality: {criminal.Nationality}");
+        PrintSuccess($"ID criminal: {criminal.Id}" +
+                     $"First Name: {criminal.FirstName}" +
+                     $",Last Name: {criminal.LastName}," +
+                     $" Height: {criminal.Height}," +
+                     $" Weight: {criminal.Weight}," +
+                     $" Nationality: {criminal.Nationality}");
     }
 }
 
@@ -124,7 +124,7 @@ void SearchCriminal()
     int height;
     while (true)
     {
-        PrintWrite("Enter height: ");
+        PrintLine("Enter height: ");
         if (int.TryParse(Console.ReadLine(), out height))
         {
             switch (height)
@@ -147,7 +147,7 @@ void SearchCriminal()
     int weight;
     while (true)
     {
-        PrintWrite("Enter weight: ");
+        PrintLine("Enter weight: ");
         if (int.TryParse(Console.ReadLine(), out weight))
         {
             switch (weight)
@@ -170,7 +170,7 @@ void SearchCriminal()
     string? nationality;
     while (true)
     {
-        PrintWrite("Enter nationality: ");
+        PrintLine("Enter nationality: ");
         nationality = Console.ReadLine();
 
         /*if (!string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter))
