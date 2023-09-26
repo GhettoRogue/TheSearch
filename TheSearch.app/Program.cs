@@ -61,11 +61,11 @@ public static class Program
 
         void ShowArrestedPeople()
         {
-            Print("List of arrested people:");
+            ConsoleHelper.Print("List of arrested people:");
             var arrestedPeople = ArrestedPeople(criminals);
             foreach (var criminal in arrestedPeople)
             {
-                PrintSuccess($"ID criminal: {criminal.Id}" +
+                ConsoleHelper.PrintSuccess($"ID criminal: {criminal.Id}" +
                              $"First Name: {criminal.FirstName}" +
                              $",Last Name: {criminal.LastName}," +
                              $" Height: {criminal.Height}," +
