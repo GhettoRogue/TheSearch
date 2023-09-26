@@ -14,7 +14,7 @@ public static class ConsoleHelper
         Console.Write(message);
     }
 
-    private static void Print(string message)
+    internal static void Print(string message)
     {
         Console.WriteLine(message);
     }
