@@ -157,14 +157,14 @@ public static class Program
             var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
             if (findCriminal.Count == 0)
             {
-                PrintWarning("No criminal found by using these data. What would you like to do next?");
+                ConsoleHelper.PrintWarning("No criminal found by using these data. What would you like to do next?");
             }
             else if (findCriminal.Count != 0)
             {
-                PrintSuccess("The criminal was found using this data: ");
+                ConsoleHelper.PrintSuccess("The criminal was found using this data: ");
                 foreach (var c in findCriminal)
                 {
-                    PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
+                    ConsoleHelper.PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
                 }
             }
         }
