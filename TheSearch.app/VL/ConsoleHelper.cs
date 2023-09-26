@@ -9,7 +9,7 @@ public static class ConsoleHelper
         Console.ResetColor();
     }
 
-    private static void PrintLine(string message)
+    internal static void PrintLine(string message)
     {
         Console.Write(message);
     }
