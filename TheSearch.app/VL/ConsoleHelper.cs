@@ -14,16 +14,16 @@ public static class ConsoleHelper
         Console.Write(message);
     }
 
+    private static void Print(string message)
+    {
+        Console.WriteLine(message);
+    }
+
     public static string UserInput(string message)
     {
         PrintLine(message);
         var input = Console.ReadLine();
         return input!;
-    }
-    
-    public static void Print(string message)
-    {
-        Console.WriteLine(message);
     }
 
     public static void PrintError(string message)
@@ -44,5 +44,11 @@ public static class ConsoleHelper
     public static void PrintWarning(string message)
     {
         PrintColorLine(message, ConsoleColor.Yellow);
+    }
+
+    public static int InputNumber(string message)
+    {
+        Print(message);
+        return Convert.ToInt32(Console.ReadLine());
     }
 }
