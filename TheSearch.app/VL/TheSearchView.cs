@@ -2,7 +2,7 @@
 
 public static class TheSearchView
 {
-    private static void ShowMenu()
+    public static void ShowMenu()
     {
         Console.WriteLine("--------< Menu >--------");
         Console.WriteLine("1. Show arrested people.");
