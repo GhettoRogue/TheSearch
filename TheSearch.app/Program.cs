@@ -1,4 +1,5 @@
-﻿using TheSearch.app.Models;
+﻿using TheSearch.app.BLL;
+using TheSearch.app.Models;
 using TheSearch.app.VL;
 
 namespace TheSearch.app;
@@ -9,6 +10,7 @@ public static class Program
 {
     public static void Main()
     {
+        var validator = new Validator();
         var criminals = new List<Criminal>
         {
             CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false),
@@ -29,7 +31,7 @@ public static class Program
             var exit = false;
             do
             {
-                ShowMenu();
+                TheSearchView.ShowMenu();
                 
                 switch (ConsoleHelper.UserInput("Enter your choice detective: "))
                 {
@@ -51,15 +53,6 @@ public static class Program
             ConsoleHelper.PrintSuccess("Good hunting, detective.");
         }
 
-        void ShowMenu()
-        {
-            Console.WriteLine("--------< Menu >--------");
-            Console.WriteLine("1. Show arrested people.");
-            Console.WriteLine("2. Search for a criminal.");
-            Console.WriteLine("0. Exit");
-            Console.WriteLine("------------------------");
-        }
-
         void ShowArrestedPeople()
         {
             ConsoleHelper.Print("List of arrested people:");
@@ -76,78 +69,54 @@ public static class Program
         }
 
         void SearchCriminal()
-        {
+        {  
             ConsoleHelper.Print("Search for a criminal:");
             int height;
             while (true)
             {
                 ConsoleHelper.PrintLine("Enter height: ");
-                if (int.TryParse(Console.ReadLine(), out height))
-                {
-                    switch (height)
-                    {
-                        case <= 0:
-                            ConsoleHelper.PrintError("Error: height must be more than 0. Please try again.");
-                            continue;
-                        case < 100:
-                        case > 300:
-                            ConsoleHelper.PrintError("Error: height must be between 100 or 300 cm");
-                            continue;
-                    }
+                int.TryParse(Console.ReadLine(), out height);
 
-                    break;
+                if (!Validator.ValidateHeight(height))
+                {
+                    ConsoleHelper.PrintError("Error: invalid height. Please try again.");
+                    continue;
                 }
 
-                ConsoleHelper.PrintError("Error: invalid height. Please try again.");
+                break;
             }
 
             int weight;
             while (true)
             {
-                ConsoleHelper.PrintLine("Enter weight: ");
-                if (int.TryParse(Console.ReadLine(), out weight))
-                {
-                    switch (weight)
-                    {
-                        case <= 0:
-                            ConsoleHelper.PrintError("Error: weight must be more than 0. Please try again.");
-                            continue;
-                        case < 40:
-                        case > 180:
-                            ConsoleHelper.PrintError("Error: weight must be between 40 or 180 cm");
-                            continue;
-                    }
+                Console.Write("Enter weight: ");
+                int.TryParse(Console.ReadLine(), out weight);
 
-                    break;
+                if (!Validator.ValidateWeight(weight))
+                {
+                    ConsoleHelper.PrintError("Error: invalid weight. Please try again.");
+                    continue;
                 }
 
-                ConsoleHelper. PrintError("Error: invalid weight. Please try again.");
-            }
-
+                break;
+            } 
             string? nationality;
-            while (true)
-            {
-                ConsoleHelper.PrintLine("Enter nationality: ");
+            while(true) {
+
+                Console.Write("Enter nationality: ");
                 nationality = Console.ReadLine();
 
-                /*if (!string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter))
-    {
-        break;
-    }*/
-
-                if (nationality != null && nationality.All(char.IsLetter))
-                {
-                    break;
+                if(!Validator.ValidateNationality(nationality)) {
+                    Console.WriteLine("Invalid nationality!");
+                    continue;
                 }
 
-                ConsoleHelper.PrintError("Invalid nationality. Please try again.");
-
-                // throw new FormatException("Invalid nationality. Please try again.");
-                // Console.WriteLine("Invalid nationality. Please try again.");
+                break;
             }
 
             FindCriminal(height, weight, nationality);
         }
+        
 
         #endregion
 
