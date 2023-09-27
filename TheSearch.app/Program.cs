@@ -3,6 +3,7 @@ using TheSearch.app.VL;
 
 namespace TheSearch.app;
 
+//TODO: Add BLL support
 
 public static class Program
 {
