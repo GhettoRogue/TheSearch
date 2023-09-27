@@ -3,6 +3,8 @@ using TheSearch.app.VL;
 
 namespace TheSearch.app;
 
+//TODO: Add BLL support
+
 public static class Program
 {
     public static void Main()
@@ -28,9 +30,8 @@ public static class Program
             do
             {
                 ShowMenu();
-
-                var input = ConsoleHelper.UserInput("Enter your choice detective: ");
-                switch (ConsoleHelper.UserInput(input))
+                
+                switch (ConsoleHelper.UserInput("Enter your choice detective: "))
                 {
                     case "1":
                         ShowArrestedPeople();
