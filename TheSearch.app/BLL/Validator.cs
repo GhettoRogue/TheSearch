@@ -1,6 +1,6 @@
 ﻿namespace TheSearch.app.BLL;
 
-public class Validator
+public static class Validator
 {
     public static bool ValidateHeight(int height) 
     {
