@@ -7,5 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="BLL\" />
+    </ItemGroup>
+
 
 </Project>
