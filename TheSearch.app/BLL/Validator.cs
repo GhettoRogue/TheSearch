@@ -1,4 +1,6 @@
-﻿namespace TheSearch.app.BLL;
+﻿using TheSearch.app.Models;
+
+namespace TheSearch.app.BLL;
 
 public static class Validator
 {
@@ -32,4 +34,6 @@ public static class Validator
     {
         return !string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter);
     }
+
+    
 }
