@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using TheSearch.app.Models;
-
-namespace TheSearch.app.VL;
+﻿namespace TheSearch.app.VL;
 
 public static class DetectiveView
 {
