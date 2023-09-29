@@ -4,13 +4,10 @@ using TheSearch.app.VL;
 
 namespace TheSearch.app;
 
-//TODO: Add BLL support
-
 public static class Program
 {
     public static void Main()
     {
-        var validator = new Validator();
         var criminals = new List<Criminal>
         {
             CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false),
@@ -32,7 +29,7 @@ public static class Program
             do
             {
                 TheSearchView.ShowMenu();
-                
+
                 switch (ConsoleHelper.UserInput("Enter your choice detective: "))
                 {
                     case "1":
@@ -60,16 +57,17 @@ public static class Program
             foreach (var criminal in arrestedPeople)
             {
                 ConsoleHelper.PrintSuccess($"ID criminal: {criminal.Id}" +
-                             $"First Name: {criminal.FirstName}" +
-                             $",Last Name: {criminal.LastName}," +
-                             $" Height: {criminal.Height}," +
-                             $" Weight: {criminal.Weight}," +
-                             $" Nationality: {criminal.Nationality}");
+                                           $"First Name: {criminal.FirstName}" +
+                                           $",Last Name: {criminal.LastName}," +
+                                           $" Height: {criminal.Height}," +
+                                           $" Weight: {criminal.Weight}," +
+                                           $" Nationality: {criminal.Nationality}");
             }
         }
 
+        
         void SearchCriminal()
-        {  
+        {
             ConsoleHelper.Print("Search for a criminal:");
             int height;
             while (true)
@@ -99,15 +97,17 @@ public static class Program
                 }
 
                 break;
-            } 
-            string? nationality;
-            while(true) {
+            }
 
+            string? nationality = null;
+            //const string nationality = "";
+            //var nationality = "";
+            while (true)
+            {
                 Console.Write("Enter nationality: ");
-                nationality = Console.ReadLine();
-
-                if(!Validator.ValidateNationality(nationality)) {
-                    Console.WriteLine("Invalid nationality!");
+                if (!Validator.ValidateNationality(nationality))
+                {
+                    ConsoleHelper.PrintError("Error: invalid nationality. Please try again.");
                     continue;
                 }
 
@@ -116,7 +116,6 @@ public static class Program
 
             FindCriminal(height, weight, nationality);
         }
-        
 
         #endregion
 
@@ -134,7 +133,8 @@ public static class Program
                 ConsoleHelper.PrintSuccess("The criminal was found using this data: ");
                 foreach (var c in findCriminal)
                 {
-                    ConsoleHelper.PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}");
+                    ConsoleHelper.PrintCriminal($"Height: {c.Height}," + $" Weight: {c.Weight}," +
+                                                $" Nationality: {c.Nationality}");
                 }
             }
         }
