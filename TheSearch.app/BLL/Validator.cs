@@ -8,7 +8,7 @@ public static class Validator
         {
             case <= 0:
             case < 100:
-            case > 300:
+            case > 290:
                 return false;
             default:
                 return true;
