@@ -2,6 +2,7 @@
 
 public static class TheSearchView
 {
+    
     public static void ShowMenu()
     {
         Console.WriteLine("--------< Menu >--------");
