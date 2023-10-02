@@ -1,35 +1,28 @@
 ﻿using System.Collections;
+using TheSearch.app.DAL;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.BLL;
 
 public class Detective : IDetective
 {
-    private readonly List<Criminal> _criminals;
+    private readonly ICriminalRepository _repository;
 
-    public Detective(List<Criminal> criminals)
+    public Detective(ICriminalRepository repository)
     {
-        _criminals = criminals;
+        _repository = repository;
     }
 
     public IEnumerable<Criminal> FindCriminalByParameters(int height, int weight, string? nationality)
     {
-        var find =
-            from c in _criminals
-            where c.Height == height && c.Weight == weight && c.Nationality == nationality
-            select c;
-
-        return find;
+        return _repository.GetAll().Where(c =>
+            c.Height == height
+            && c.Weight == weight
+            && c.Nationality == nationality);
     }
 
     public IEnumerable<Criminal> GetArrestedCriminals(IEnumerable<Criminal> criminal)
     {
         return criminal.Where(c => c.IsArrested);
-        /*var arrested =
-            from person in criminal
-            where person.IsArrested
-            select person;
-
-        return arrested;*/
     }
 }
