@@ -4,18 +4,17 @@ using TheSearch.app.VL;
 
 namespace TheSearch.app;
 
-public static class Program
+public abstract class Program
 {
     public static void Main()
     {
-        var criminals = new List<Criminal>
-        {
-            CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false),
-            CriminalFactory.CreateCriminal("Jane", "Johnson", 168, 56, "Canadian", true),
-            CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true),
-            CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true),
-            CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false)
-        };
+        var list = new List<Criminal>();
+        if (list == null) throw new ArgumentNullException(nameof(list));
+        list.Add(CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false));
+        list.Add(CriminalFactory.CreateCriminal("Jane", "Johnson", 168, 56, "Canadian", true));
+        list.Add(CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true));
+        list.Add(CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true));
+        list.Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
 
         ShowDetectiveMenu();
 
@@ -33,7 +32,7 @@ public static class Program
                 switch (ConsoleHelper.UserInput("Enter your choice detective: "))
                 {
                     case "1":
-                        ShowArrestedPeople();
+                        DetectiveView.ShowArrestedPeople();
                         break;
                     case "2":
                         SearchCriminal();
@@ -50,7 +49,7 @@ public static class Program
             ConsoleHelper.PrintSuccess("Good hunting, detective.");
         }
 
-        void ShowArrestedPeople()
+        /*void ShowArrestedPeople()
         {
             ConsoleHelper.Print("List of arrested people:");
             var arrestedPeople = ArrestedPeople(criminals);
@@ -63,7 +62,7 @@ public static class Program
                                            $" Weight: {criminal.Weight}," +
                                            $" Nationality: {criminal.Nationality}");
             }
-        }
+        }*/
 
         
         void SearchCriminal()
@@ -99,12 +98,13 @@ public static class Program
                 break;
             }
 
-            string? nationality = null;
+            // string? nationality = null;
             //const string nationality = "";
-            //var nationality = "";
+            string? nationality;
             while (true)
             {
                 Console.Write("Enter nationality: ");
+                nationality = Console.ReadLine();
                 if (!Validator.ValidateNationality(nationality))
                 {
                     ConsoleHelper.PrintError("Error: invalid nationality. Please try again.");
@@ -114,14 +114,14 @@ public static class Program
                 break;
             }
 
-            FindCriminal(height, weight, nationality);
+            DetectiveView.FindCriminal(height, weight, nationality);
         }
 
         #endregion
 
         #region FindInfo
 
-        void FindCriminal(int height, int weight, string? nationality)
+        /*void FindCriminal(int height, int weight, string? nationality)
         {
             var findCriminal = FindCriminalByParameters(criminals, height, weight, nationality).ToList();
             if (findCriminal.Count == 0)
@@ -137,9 +137,9 @@ public static class Program
                                                 $" Nationality: {c.Nationality}");
                 }
             }
-        }
+        }*/
 
-        IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
+        /*IEnumerable<Criminal> ArrestedPeople(IEnumerable<Criminal> criminal)
         {
             var arrested =
                 from person in criminal
@@ -158,7 +158,7 @@ public static class Program
                 select c;
 
             return find;
-        }
+        }*/
 
         #endregion
     }
