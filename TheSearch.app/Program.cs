@@ -19,12 +19,11 @@ public abstract class Program
         var detective = new Detective(repository);
         var detectiveView = new DetectiveView(detective);
 
-
-        ShowDetectiveMenu(detectiveView, repository);
+        ShowDetectiveMenu();
 
         return;
 
-        static void ShowDetectiveMenu(DetectiveView detectiveView, ICriminalRepository repository)
+        void ShowDetectiveMenu()
         {
             var exit = false;
             do
