@@ -3,11 +3,11 @@ using TheSearch.app.Models;
 
 namespace TheSearch.app.VL;
 
-public abstract class DetectiveView
+public class DetectiveView
     {
         private readonly IDetective _detective;
 
-        protected DetectiveView(IDetective detective)
+        public DetectiveView(IDetective detective)
         {
             _detective = detective;
         }
