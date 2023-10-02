@@ -1,39 +1,19 @@
-﻿using TheSearch.app.Models;
-
-namespace TheSearch.app.BLL;
+﻿namespace TheSearch.app.BLL;
 
 public static class Validator
 {
-    public static bool ValidateHeight(int height) 
+    public static bool ValidateHeight(int height)
     {
-        switch (height)
-        {
-            case <= 0:
-            case < 100:
-            case > 290:
-                return false;
-            default:
-                return true;
-        }
+        return height is > 0 and >= 100 and <= 290;
     }
 
     public static bool ValidateWeight(int weight)
     {
-        switch (weight)
-        {
-            case <= 0:
-            case < 40:
-            case > 180:
-                return false;
-            default:
-                return true;
-        }
+        return weight is > 0 and >= 40 and <= 180;
     }
 
     public static bool ValidateNationality(string? nationality)
     {
         return !string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter);
     }
-
-    
 }
