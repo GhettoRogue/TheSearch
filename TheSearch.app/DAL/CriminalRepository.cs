@@ -11,6 +11,16 @@ public class CriminalRepository : ICriminalRepository
         return _criminals;
     }
 
+    public IEnumerable<Criminal> GetOnlyArrested()
+    {
+        return _criminals.Where(c => c.IsArrested);
+    }
+
+    public IEnumerable<Criminal> GetNotArrested()
+    {
+        return _criminals.Where(c => !c.IsArrested);
+    }
+
     public void Initialize()
     {
         Add(CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false));
@@ -26,5 +36,4 @@ public class CriminalRepository : ICriminalRepository
     {
         _criminals.Add(criminal);
     }
-        
 }
