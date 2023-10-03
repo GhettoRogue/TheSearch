@@ -1,4 +1,6 @@
-﻿using TheSearch.app.BLL;
+﻿using System.Text.Json;
+using System.Text.Json.Nodes;
+using TheSearch.app.BLL;
 using TheSearch.app.DAL;
 using TheSearch.app.VL;
 
@@ -14,7 +16,9 @@ public abstract class Program
         var detective = new Detective(repository);
         var detectiveView = new DetectiveView(detective);
 
-        ShowDetectiveMenu();
+        //ShowDetectiveMenu();
+
+        var criminalJson = JsonSerializer.Serialize(repository.GetAll());
 
         return;
 
