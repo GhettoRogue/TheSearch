@@ -19,6 +19,7 @@ public abstract class Program
         //ShowDetectiveMenu();
 
         var criminalJson = JsonSerializer.Serialize(repository.GetAll());
+        File.WriteAllText("criminal.json",criminalJson);
 
         return;
 
