@@ -18,6 +18,7 @@ public class CriminalRepository : ICriminalRepository
         Add(CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true));
         Add(CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true));
         Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
+        Add(CriminalFactory.CreateCriminal("Ivan", "Ivanov", 220, 150, "Russian", false));
     }
 
 
