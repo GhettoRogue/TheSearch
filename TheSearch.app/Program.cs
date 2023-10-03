@@ -18,8 +18,19 @@ public abstract class Program
 
         //ShowDetectiveMenu();
 
+        #region JsonTesting
+
         var criminalJson = JsonSerializer.Serialize(repository.GetAll());
-        File.WriteAllText("criminal.json",criminalJson);
+        File.WriteAllText("criminal.json", criminalJson);
+
+        var arrestedJson = JsonSerializer.Serialize(repository.GetOnlyArrested());
+        File.WriteAllText("arrested.json", arrestedJson);
+
+        var notArrestedJson = JsonSerializer.Serialize(repository.GetNotArrested());
+        File.WriteAllText("notArrested.json", notArrestedJson);
+
+        #endregion
+
 
         return;
 
