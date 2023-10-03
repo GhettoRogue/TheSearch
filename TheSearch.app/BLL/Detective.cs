@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TheSearch.app.DAL;
+﻿using TheSearch.app.DAL;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.BLL;
@@ -25,4 +24,5 @@ public class Detective : IDetective
     {
         return criminal.Where(c => c.IsArrested);
     }
+    
 }
