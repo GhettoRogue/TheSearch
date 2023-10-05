@@ -34,26 +34,26 @@ public abstract class Program
 
         #region JsonTestingDeserialize
 
-        /*var criminalsJson = File.ReadAllText("criminal.json");
+        var criminalsJson = File.ReadAllText("criminal.json");
         var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
 
-        foreach (var c in criminals)
+        foreach (var c in criminals!)
         {
             Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
-        }*/
+        }
         
-        /*var arrestedJson = File.ReadAllText("arrested.json");
-        var criminals = JsonSerializer.Deserialize<List<Criminal>>(arrestedJson);
+        var arrestedJson = File.ReadAllText("arrested.json");
+        var arrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(arrestedJson);
 
-        foreach (var c in criminals)
+        foreach (var c in arrestedCriminals!)
         {
             Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
-        }*/
+        }
         
         var notArrestedJson = File.ReadAllText("notArrested.json");
-        var criminals = JsonSerializer.Deserialize<List<Criminal>>(notArrestedJson);
+        var notArrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(notArrestedJson);
 
-        foreach (var c in criminals)
+        foreach (var c in notArrestedCriminals!)
         {
             Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
         }
