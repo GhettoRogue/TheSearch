@@ -2,6 +2,7 @@
 using System.Text.Json.Nodes;
 using TheSearch.app.BLL;
 using TheSearch.app.DAL;
+using TheSearch.app.Models;
 using TheSearch.app.VL;
 
 namespace TheSearch.app;
@@ -18,7 +19,7 @@ public abstract class Program
 
         //ShowDetectiveMenu();
 
-        #region JsonTesting
+        #region JsonTestingSerialize
 
         var criminalJson = JsonSerializer.Serialize(repository.GetAll());
         File.WriteAllText("criminal.json", criminalJson);
@@ -31,6 +32,17 @@ public abstract class Program
 
         #endregion
 
+        #region JsonTestingDeSerialize
+
+        var criminalsJson = File.ReadAllText("criminal.json");
+        var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
+
+        foreach (var c in criminals)
+        {
+            Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
+        }
+
+        #endregion
 
         return;
 
