@@ -19,7 +19,7 @@ public abstract class Program
 
         //ShowDetectiveMenu();
 
-        #region JsonTestingSerialize
+        /*#region JsonTestingSerialize
 
         var criminalJson = JsonSerializer.Serialize(repository.GetAll());
         File.WriteAllText("criminal.json", criminalJson);
@@ -30,12 +30,20 @@ public abstract class Program
         var notArrestedJson = JsonSerializer.Serialize(repository.GetNotArrested());
         File.WriteAllText("notArrested.json", notArrestedJson);
 
-        #endregion
+        #endregion*/
 
-        #region JsonTestingDeSerialize
+        #region JsonTestingDeserialize
 
-        var criminalsJson = File.ReadAllText("criminal.json");
+        /*var criminalsJson = File.ReadAllText("criminal.json");
         var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
+
+        foreach (var c in criminals)
+        {
+            Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
+        }*/
+        
+        var arrestedJson = File.ReadAllText("arrested.json");
+        var criminals = JsonSerializer.Deserialize<List<Criminal>>(arrestedJson);
 
         foreach (var c in criminals)
         {
