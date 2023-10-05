@@ -32,7 +32,7 @@ public abstract class Program
 
         #endregion*/
 
-        #region JsonTestingDeserialize
+        /*#region JsonTestingDeserialize
 
         var criminalsJson = File.ReadAllText("criminal.json");
         var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
@@ -58,7 +58,7 @@ public abstract class Program
             Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
         }
 
-        #endregion
+        #endregion*/
 
         return;
 
