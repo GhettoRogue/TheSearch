@@ -31,7 +31,8 @@ public class CriminalRepository : ICriminalRepository
 
     public void SerializeArrestedCriminals(string file)
     {
-        throw new NotImplementedException();
+        var json = JsonSerializer.Serialize(GetOnlyArrested());
+        File.WriteAllText(FileContext.Arrested, json);
     }
 
     public void SerializeNotArrestedCriminals(string file)
