@@ -37,7 +37,8 @@ public class CriminalRepository : ICriminalRepository
 
     public void SerializeNotArrestedCriminals(string file)
     {
-        throw new NotImplementedException();
+        var json = JsonSerializer.Serialize(GetNotArrested());
+        File.WriteAllText(FileContext.NotArrested, json);
     }
 
 
@@ -50,7 +51,7 @@ public class CriminalRepository : ICriminalRepository
         Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
         Add(CriminalFactory.CreateCriminal("Ivan", "Ivanov", 220, 150, "Russian", false));
     }
-    
+
     private void Add(Criminal criminal)
     {
         _criminals.Add(criminal);
