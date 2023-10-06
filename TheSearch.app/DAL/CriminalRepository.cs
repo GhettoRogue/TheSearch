@@ -23,19 +23,19 @@ public class CriminalRepository : ICriminalRepository
         return _criminals.Where(c => !c.IsArrested);
     }
 
-    public void SerializeAllCriminals(string file)
+    public void SerializeAllCriminals()
     {
         var json = JsonSerializer.Serialize(GetAll);
         File.WriteAllText(FileContext.Criminals, json);
     }
 
-    public void SerializeArrestedCriminals(string file)
+    public void SerializeArrestedCriminals()
     {
         var json = JsonSerializer.Serialize(GetOnlyArrested());
         File.WriteAllText(FileContext.Arrested, json);
     }
 
-    public void SerializeNotArrestedCriminals(string file)
+    public void SerializeNotArrestedCriminals()
     {
         var json = JsonSerializer.Serialize(GetNotArrested());
         File.WriteAllText(FileContext.NotArrested, json);
