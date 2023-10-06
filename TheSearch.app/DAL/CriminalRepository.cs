@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using TheSearch.app.Models;
+using TheSearch.app.DAL;
 
 namespace TheSearch.app.DAL;
 
@@ -22,16 +23,22 @@ public class CriminalRepository : ICriminalRepository
         return _criminals.Where(c => !c.IsArrested);
     }
 
-    public void SaveToJson(string fileName)
+    public void SerializeAllCriminals(string file)
     {
-        var criminalsJson = File.ReadAllText("criminal.json");
-        var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
+        var json = JsonSerializer.Serialize(GetAll);
+        File.WriteAllText(FileContext.Criminals, json);
     }
 
-    public void LoadFromJson(string fileName)
+    public void SerializeArrestedCriminals(string file)
     {
         throw new NotImplementedException();
     }
+
+    public void SerializeNotArrestedCriminals(string file)
+    {
+        throw new NotImplementedException();
+    }
+
 
     public void Initialize()
     {
