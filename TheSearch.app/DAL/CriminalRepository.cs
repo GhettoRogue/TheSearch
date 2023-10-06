@@ -1,4 +1,5 @@
-﻿using TheSearch.app.Models;
+﻿using System.Text.Json;
+using TheSearch.app.Models;
 
 namespace TheSearch.app.DAL;
 
@@ -19,6 +20,17 @@ public class CriminalRepository : ICriminalRepository
     public IEnumerable<Criminal> GetNotArrested()
     {
         return _criminals.Where(c => !c.IsArrested);
+    }
+
+    public void SaveToJson(string fileName)
+    {
+        var criminalsJson = File.ReadAllText("criminal.json");
+        var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
+    }
+
+    public void LoadFromJson(string fileName)
+    {
+        throw new NotImplementedException();
     }
 
     public void Initialize()
