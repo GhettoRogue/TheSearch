@@ -10,7 +10,7 @@ public interface ICriminalRepository
 
     IEnumerable<Criminal> GetNotArrested();
 
-    void SerializeAllCriminals(string file);
-    void SerializeArrestedCriminals(string file);
-    void SerializeNotArrestedCriminals(string file);
+    void SerializeAllCriminals();
+    void SerializeArrestedCriminals();
+    void SerializeNotArrestedCriminals();
 }
