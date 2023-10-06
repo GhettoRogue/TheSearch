@@ -25,7 +25,7 @@ public class CriminalRepository : ICriminalRepository
 
     public void SerializeAllCriminals()
     {
-        var json = JsonSerializer.Serialize(GetAll);
+        var json = JsonSerializer.Serialize(GetAll());
         File.WriteAllText(FileContext.Criminals, json);
     }
 
