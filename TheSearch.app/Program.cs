@@ -19,18 +19,15 @@ public abstract class Program
 
         //ShowDetectiveMenu();
 
-        /*#region JsonTestingSerialize
+        #region JsonTestingSerialize
 
-        var criminalJson = JsonSerializer.Serialize(repository.GetAll());
-        File.WriteAllText("criminal.json", criminalJson);
+        repository.SerializeAllCriminals();
 
-        var arrestedJson = JsonSerializer.Serialize(repository.GetOnlyArrested());
-        File.WriteAllText("arrested.json", arrestedJson);
+        repository.SerializeArrestedCriminals();
 
-        var notArrestedJson = JsonSerializer.Serialize(repository.GetNotArrested());
-        File.WriteAllText("notArrested.json", notArrestedJson);
+        repository.SerializeNotArrestedCriminals();
 
-        #endregion*/
+        #endregion
 
         /*#region JsonTestingDeserialize
 
@@ -39,23 +36,26 @@ public abstract class Program
 
         foreach (var c in criminals!)
         {
-            Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
+            Console.WriteLine(
+                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
         }
-        
-        var arrestedJson = File.ReadAllText("arrested.json");
+
+        arrestedJson = File.ReadAllText("arrested.json");
         var arrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(arrestedJson);
 
         foreach (var c in arrestedCriminals!)
         {
-            Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
+            Console.WriteLine(
+                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
         }
-        
-        var notArrestedJson = File.ReadAllText("notArrested.json");
+
+        notArrestedJson = File.ReadAllText("notArrested.json");
         var notArrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(notArrestedJson);
 
         foreach (var c in notArrestedCriminals!)
         {
-            Console.WriteLine($"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
+            Console.WriteLine(
+                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
         }
 
         #endregion*/
