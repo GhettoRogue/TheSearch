@@ -29,36 +29,15 @@ public abstract class Program
 
         #endregion
 
-        /*#region JsonTestingDeserialize
+        #region JsonTestingDeserialize
 
-        var criminalsJson = File.ReadAllText("criminal.json");
-        var criminals = JsonSerializer.Deserialize<List<Criminal>>(criminalsJson);
+        repository.DeserializeAllCriminals();
+        
+        repository.DeserializeOnlyArrested();
 
-        foreach (var c in criminals!)
-        {
-            Console.WriteLine(
-                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
-        }
+        repository.DeserializeNotArrested();
 
-        arrestedJson = File.ReadAllText("arrested.json");
-        var arrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(arrestedJson);
-
-        foreach (var c in arrestedCriminals!)
-        {
-            Console.WriteLine(
-                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
-        }
-
-        notArrestedJson = File.ReadAllText("notArrested.json");
-        var notArrestedCriminals = JsonSerializer.Deserialize<List<Criminal>>(notArrestedJson);
-
-        foreach (var c in notArrestedCriminals!)
-        {
-            Console.WriteLine(
-                $"{c.Id}, {c.IsArrested}: {c.Nationality}, {c.FirstName}, {c.LastName}, {c.Height}, {c.Weight}");
-        }
-
-        #endregion*/
+        #endregion
 
         return;
 
