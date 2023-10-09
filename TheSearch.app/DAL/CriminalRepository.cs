@@ -41,6 +41,22 @@ public class CriminalRepository : ICriminalRepository
         File.WriteAllText(FileContext.NotArrested, json);
     }
 
+    public void DeserializeAllCriminals()
+    {
+        var json = File.ReadAllText(FileContext.Criminals);
+        JsonSerializer.Deserialize<List<Criminal>>(json);
+    }
+
+    public void DeserializeOnlyArrested()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DeserializeNotArrested()
+    {
+        throw new NotImplementedException();
+    }
+
 
     public void Initialize()
     {
