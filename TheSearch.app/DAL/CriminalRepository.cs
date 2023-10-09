@@ -49,12 +49,14 @@ public class CriminalRepository : ICriminalRepository
 
     public void DeserializeOnlyArrested()
     {
-        throw new NotImplementedException();
+        var json = File.ReadAllText(FileContext.Arrested);
+        JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
     public void DeserializeNotArrested()
     {
-        throw new NotImplementedException();
+        var json = File.ReadAllText(FileContext.NotArrested);
+        JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
 
