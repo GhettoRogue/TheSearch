@@ -19,7 +19,7 @@ public abstract class Program
 
         //ShowDetectiveMenu();
 
-        #region JsonTestingSerialize
+        /*#region JsonTestingSerialize
 
         repository.SerializeAllCriminals();
 
@@ -27,15 +27,20 @@ public abstract class Program
 
         repository.SerializeNotArrestedCriminals();
 
-        #endregion
+        #endregion*/
 
         #region JsonTestingDeserialize
 
         repository.DeserializeAllCriminals();
-        
-        repository.DeserializeOnlyArrested();
 
-        repository.DeserializeNotArrested();
+        foreach (var item in repository.GetAll())
+        {
+            Console.WriteLine($"{item.Id}, {item.FirstName}, {item.LastName}, {item.IsArrested}, {item.Nationality}, {item.Height}, {item.Weight}");
+        }
+        
+        /*repository.DeserializeOnlyArrested();
+
+        repository.DeserializeNotArrested();*/
 
         #endregion
 
