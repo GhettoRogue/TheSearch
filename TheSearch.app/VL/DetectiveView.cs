@@ -24,7 +24,7 @@ public class DetectiveView
                 switch (ConsoleHelper.UserInput("Enter your choice detective: "))
                 {
                     case "1":
-                        ShowArrestedPeople(repository.GetAll());
+                        ShowArrestedPeople(_repository.GetAll());
                         break;
                     case "2":
                         SearchCriminal();
