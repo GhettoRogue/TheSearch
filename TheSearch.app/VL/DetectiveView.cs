@@ -1,4 +1,5 @@
 ﻿using TheSearch.app.BLL;
+using TheSearch.app.DAL;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.VL;
@@ -6,6 +7,7 @@ namespace TheSearch.app.VL;
 public class DetectiveView
     {
         private readonly IDetective _detective;
+        private readonly ICriminalRepository _repository;
 
         public DetectiveView(IDetective detective)
         {
