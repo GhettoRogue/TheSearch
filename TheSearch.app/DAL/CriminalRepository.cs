@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using TheSearch.app.Models;
-using TheSearch.app.DAL;
 
 namespace TheSearch.app.DAL;
 
@@ -22,6 +21,23 @@ public class CriminalRepository : ICriminalRepository
     {
         return _criminals.Where(c => !c.IsArrested);
     }
+
+    private void Add(Criminal criminal)
+    {
+        _criminals.Add(criminal);
+    }
+
+    public void Initialize()
+    {
+        Add(CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false));
+        Add(CriminalFactory.CreateCriminal("Jane", "Johnson", 168, 56, "Canadian", true));
+        Add(CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true));
+        Add(CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true));
+        Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
+        Add(CriminalFactory.CreateCriminal("Ivan", "Ivanov", 220, 190, "Russian", false));
+    }
+
+    #region JsonMethods
 
     public void SerializeAllCriminals()
     {
@@ -59,19 +75,5 @@ public class CriminalRepository : ICriminalRepository
         JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
-
-    public void Initialize()
-    {
-        Add(CriminalFactory.CreateCriminal("John", "Smith", 160, 50, "Indian", false));
-        Add(CriminalFactory.CreateCriminal("Jane", "Johnson", 168, 56, "Canadian", true));
-        Add(CriminalFactory.CreateCriminal("Michael", "Brown", 183, 60, "Australian", true));
-        Add(CriminalFactory.CreateCriminal("William", "Wilson", 190, 90, "Scottish", true));
-        Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
-        Add(CriminalFactory.CreateCriminal("Ivan", "Ivanov", 220, 190, "Russian", false));
-    }
-
-    private void Add(Criminal criminal)
-    {
-        _criminals.Add(criminal);
-    }
+    #endregion
 }
