@@ -17,9 +17,9 @@ public abstract class Program
         var detective = new Detective(repository);
         var detectiveView = new DetectiveView(detective);
 
-        //ShowDetectiveMenu();
+        ShowDetectiveMenu();
 
-        /*#region JsonTestingSerialize
+        #region JsonTestingSerialize
 
         repository.SerializeAllCriminals();
 
@@ -27,20 +27,15 @@ public abstract class Program
 
         repository.SerializeNotArrestedCriminals();
 
-        #endregion*/
+        #endregion
 
         #region JsonTestingDeserialize
 
         repository.DeserializeAllCriminals();
-
-        foreach (var item in repository.GetAll())
-        {
-            Console.WriteLine($"{item.Id}, {item.FirstName}, {item.LastName}, {item.IsArrested}, {item.Nationality}, {item.Height}, {item.Weight}");
-        }
         
-        /*repository.DeserializeOnlyArrested();
+        repository.DeserializeOnlyArrested();
 
-        repository.DeserializeNotArrested();*/
+        repository.DeserializeNotArrested();
 
         #endregion
 
