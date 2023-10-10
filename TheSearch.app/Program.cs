@@ -15,9 +15,9 @@ public abstract class Program
         repository.Initialize();
 
         var detective = new Detective(repository);
-        var detectiveView = new DetectiveView(detective);
+        var detectiveView = new DetectiveView(detective, repository);
 
-        ShowDetectiveMenu();
+        detectiveView.ShowDetectiveMenu();
 
         #region JsonTestingSerialize
 
@@ -38,33 +38,6 @@ public abstract class Program
         repository.DeserializeNotArrested();
 
         #endregion
-
-        return;
-
-        /*void ShowDetectiveMenu()
-        {
-            var exit = false;
-            do
-            {
-                TheSearchView.ShowMenu();
-                switch (ConsoleHelper.UserInput("Enter your choice detective: "))
-                {
-                    case "1":
-                        detectiveView.ShowArrestedPeople(repository.GetAll());
-                        break;
-                    case "2":
-                        detectiveView.SearchCriminal();
-                        break;
-                    case "0":
-                        exit = true;
-                        break;
-                    default:
-                        ConsoleHelper.PrintError("Invalid choice. Please try again.");
-                        break;
-                }
-            } while (!exit);
-
-            ConsoleHelper.PrintSuccess("Good hunting, detective.");
-        }*/
+        
     }
 }
