@@ -9,9 +9,10 @@ public class DetectiveView
         private readonly IDetective _detective;
         private readonly ICriminalRepository _repository;
 
-        public DetectiveView(IDetective detective)
+        public DetectiveView(IDetective detective, ICriminalRepository repository)
         {
             _detective = detective;
+            _repository = repository;
         }
         
         void ShowDetectiveMenu()
