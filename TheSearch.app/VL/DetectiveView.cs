@@ -15,7 +15,7 @@ public class DetectiveView
             _repository = repository;
         }
         
-        void ShowDetectiveMenu()
+        public void ShowDetectiveMenu()
         {
             var exit = false;
             do
