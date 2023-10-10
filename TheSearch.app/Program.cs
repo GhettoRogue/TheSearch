@@ -41,7 +41,7 @@ public abstract class Program
 
         return;
 
-        void ShowDetectiveMenu()
+        /*void ShowDetectiveMenu()
         {
             var exit = false;
             do
@@ -65,6 +65,6 @@ public abstract class Program
             } while (!exit);
 
             ConsoleHelper.PrintSuccess("Good hunting, detective.");
-        }
+        }*/
     }
 }
