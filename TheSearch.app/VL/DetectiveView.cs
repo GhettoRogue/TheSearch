@@ -11,6 +11,32 @@ public class DetectiveView
         {
             _detective = detective;
         }
+        
+        void ShowDetectiveMenu()
+        {
+            var exit = false;
+            do
+            {
+                TheSearchView.ShowMenu();
+                switch (ConsoleHelper.UserInput("Enter your choice detective: "))
+                {
+                    case "1":
+                        ShowArrestedPeople(repository.GetAll());
+                        break;
+                    case "2":
+                        SearchCriminal();
+                        break;
+                    case "0":
+                        exit = true;
+                        break;
+                    default:
+                        ConsoleHelper.PrintError("Invalid choice. Please try again.");
+                        break;
+                }
+            } while (!exit);
+
+            ConsoleHelper.PrintSuccess("Good hunting, detective.");
+        }
 
         public void ShowArrestedPeople(IEnumerable<Criminal> criminals)
         {
