@@ -12,11 +12,10 @@ public abstract class Program
     public static void Main()
     {
         var repository = new CriminalRepository();
-        repository.Initialize();
-
         var detective = new Detective(repository);
+        repository.Initialize();
+        
         var detectiveView = new DetectiveView(detective, repository);
-
         detectiveView.ShowDetectiveMenu();
 
         #region JsonTestingSerialize
