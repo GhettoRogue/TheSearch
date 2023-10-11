@@ -13,10 +13,8 @@ public interface ICriminalRepository
     void SerializeAllCriminals();
     void SerializeArrestedCriminals();
     void SerializeNotArrestedCriminals();
-    
+
     void DeserializeAllCriminals();
-
     void DeserializeOnlyArrested();
-
     void DeserializeNotArrested();
 }
