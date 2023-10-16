@@ -41,7 +41,7 @@ public class DetectiveView
             ConsoleHelper.PrintSuccess("Good hunting, detective.");
         }
 
-        public void ShowArrestedPeople(IEnumerable<Criminal> criminals)
+        private void ShowArrestedPeople(IEnumerable<Criminal> criminals)
         {
             ConsoleHelper.Print("List of arrested people:");
             var arrestedPeople = _detective.GetArrestedCriminals(criminals);
@@ -75,7 +75,7 @@ public class DetectiveView
             }
         }
 
-        public void SearchCriminal()
+        private void SearchCriminal()
         {
             ConsoleHelper.Print("Search for a criminal:");
 
