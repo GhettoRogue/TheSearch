@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TheSearch.app.Models;
+﻿using TheSearch.app.Models;
 
 namespace TheSearch.app.BLL;
 
