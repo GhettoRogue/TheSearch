@@ -1,8 +1,5 @@
-﻿using System.Text.Json;
-using System.Text.Json.Nodes;
-using TheSearch.app.BLL;
+﻿using TheSearch.app.BLL;
 using TheSearch.app.DAL;
-using TheSearch.app.Models;
 using TheSearch.app.VL;
 
 namespace TheSearch.app;
@@ -20,21 +17,21 @@ public abstract class Program
 
         #region JsonTestingSerialize
 
-        repository.SerializeAllCriminals();
+        /*repository.SerializeAllCriminals();
 
         repository.SerializeArrestedCriminals();
 
-        repository.SerializeNotArrestedCriminals();
+        repository.SerializeNotArrestedCriminals();*/
 
         #endregion
-
+        
         #region JsonTestingDeserialize
 
-        repository.DeserializeAllCriminals();
+        /*repository.DeserializeAllCriminals();
         
         repository.DeserializeOnlyArrested();
 
-        repository.DeserializeNotArrested();
+        repository.DeserializeNotArrested();*/
 
         #endregion
         
