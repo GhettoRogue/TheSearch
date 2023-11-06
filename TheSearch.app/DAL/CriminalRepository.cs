@@ -42,36 +42,36 @@ public class CriminalRepository : ICriminalRepository
     public void SerializeAllCriminals()
     {
         var json = JsonSerializer.Serialize(GetAll());
-        File.WriteAllText(FileContext.Criminals, json);
+        File.WriteAllText(JsonContext.Criminals, json);
     }
 
     public void SerializeArrestedCriminals()
     {
         var json = JsonSerializer.Serialize(GetOnlyArrested());
-        File.WriteAllText(FileContext.Arrested, json);
+        File.WriteAllText(JsonContext.Arrested, json);
     }
 
     public void SerializeNotArrestedCriminals()
     {
         var json = JsonSerializer.Serialize(GetNotArrested());
-        File.WriteAllText(FileContext.NotArrested, json);
+        File.WriteAllText(JsonContext.NotArrested, json);
     }
 
     public void DeserializeAllCriminals()
     {
-        var json = File.ReadAllText(FileContext.Criminals);
+        var json = File.ReadAllText(JsonContext.Criminals);
         JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
     public void DeserializeOnlyArrested()
     {
-        var json = File.ReadAllText(FileContext.Arrested);
+        var json = File.ReadAllText(JsonContext.Arrested);
         JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
     public void DeserializeNotArrested()
     {
-        var json = File.ReadAllText(FileContext.NotArrested);
+        var json = File.ReadAllText(JsonContext.NotArrested);
         JsonSerializer.Deserialize<List<Criminal>>(json);
     }
 
