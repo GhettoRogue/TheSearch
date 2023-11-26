@@ -1,6 +1,6 @@
 ﻿using TheSearch.app.Models;
 
-namespace TheSearch.app.DAL;
+namespace TheSearch.app.DAL.Repository;
 
 public interface ICriminalRepository
 {
