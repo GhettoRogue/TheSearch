@@ -84,6 +84,8 @@ public class DetectiveView
         {
             ConsoleHelper.PrintLine("Enter height: ");
             int.TryParse(Console.ReadLine(), out height);
+            
+            if (height == 0) return;
             if (!Validator.ValidateHeight(height))
             {
                 ConsoleHelper.PrintError("Error: invalid height. Please try again.");
@@ -99,6 +101,7 @@ public class DetectiveView
             Console.Write("Enter weight: ");
             int.TryParse(Console.ReadLine(), out weight);
 
+            if (weight == 0) return;
             if (!Validator.ValidateWeight(weight))
             {
                 ConsoleHelper.PrintError("Error: invalid weight. Please try again.");
@@ -113,6 +116,8 @@ public class DetectiveView
         {
             Console.Write("Enter nationality: ");
             nationality = Console.ReadLine();
+            
+            if (Convert.ToInt32(nationality) == 0) return;
             if (!Validator.ValidateNationality(nationality))
             {
                 ConsoleHelper.PrintError("Error: invalid nationality. Please try again.");
