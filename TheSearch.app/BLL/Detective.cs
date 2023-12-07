@@ -1,5 +1,4 @@
-﻿using TheSearch.app.DAL;
-using TheSearch.app.DAL.Repository;
+﻿using TheSearch.app.DAL.Repository;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.BLL;
