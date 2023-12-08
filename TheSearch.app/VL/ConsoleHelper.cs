@@ -9,6 +9,11 @@ public static class ConsoleHelper
         Console.ResetColor();
     }
 
+    internal static void ClearConsole()
+    {
+        Console.Clear();
+    }
+
     internal static void PrintLine(string message)
     {
         Console.Write(message);
