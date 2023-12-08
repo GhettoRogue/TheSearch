@@ -1,4 +1,4 @@
-﻿namespace TheSearch.app.DAL;
+﻿namespace TheSearch.app.DAL.Json;
 
 public static class JsonContext
 {
