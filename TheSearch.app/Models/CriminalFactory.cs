@@ -7,7 +7,7 @@ public static class CriminalFactory
     {
         return new Criminal
         {
-            Id = new Guid(),
+            Id = Guid.NewGuid(),
             FirstName = firstName,
             LastName = lastName,
             Height = height,
