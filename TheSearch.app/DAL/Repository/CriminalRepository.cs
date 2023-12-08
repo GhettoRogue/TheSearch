@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using TheSearch.app.Models;
+﻿using TheSearch.app.Models;
 
 namespace TheSearch.app.DAL.Repository;
 
@@ -24,44 +23,5 @@ public class CriminalRepository : ICriminalRepository
         Add(CriminalFactory.CreateCriminal("Sophia", "Clark", 160, 51, "South African", false));
         Add(CriminalFactory.CreateCriminal("Ivan", "Ivanov", 220, 190, "Russian", false));
     }
-
-    #region JsonMethods
-
-    public void SerializeAllCriminals()
-    {
-        var json = JsonSerializer.Serialize(GetAll());
-        File.WriteAllText(JsonContext.Criminals, json);
-    }
-
-    public void SerializeArrestedCriminals()
-    {
-        var json = JsonSerializer.Serialize(GetOnlyArrested());
-        File.WriteAllText(JsonContext.Arrested, json);
-    }
-
-    public void SerializeNotArrestedCriminals()
-    {
-        var json = JsonSerializer.Serialize(GetNotArrested());
-        File.WriteAllText(JsonContext.NotArrested, json);
-    }
-
-    public void DeserializeAllCriminals()
-    {
-        var json = File.ReadAllText(JsonContext.Criminals);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
-    }
-
-    public void DeserializeOnlyArrested()
-    {
-        var json = File.ReadAllText(JsonContext.Arrested);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
-    }
-
-    public void DeserializeNotArrested()
-    {
-        var json = File.ReadAllText(JsonContext.NotArrested);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
-    }
-
-    #endregion
+    
 }

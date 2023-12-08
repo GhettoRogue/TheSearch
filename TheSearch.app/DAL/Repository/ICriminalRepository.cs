@@ -9,12 +9,5 @@ public interface ICriminalRepository
     IEnumerable<Criminal> GetOnlyArrested();
 
     IEnumerable<Criminal> GetNotArrested();
-
-    void SerializeAllCriminals();
-    void SerializeArrestedCriminals();
-    void SerializeNotArrestedCriminals();
-
-    void DeserializeAllCriminals();
-    void DeserializeOnlyArrested();
-    void DeserializeNotArrested();
+    
 }
