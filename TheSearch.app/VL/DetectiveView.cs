@@ -69,11 +69,13 @@ public class DetectiveView
         }
         else
         {
+            ConsoleHelper.ClearConsole();
             ConsoleHelper.PrintSuccess("The criminal was found using this data: ");
             foreach (var c in findCriminal)
             {
                 ConsoleHelper.PrintCriminal(
-                    $"Height: {c.Height}, Weight: {c.Weight}, Nationality: {c.Nationality}");
+                    $"[Height: {c.Height}, Weight: {c.Weight}, Nationality: {c.Nationality}]" +
+                    $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| " );
             }
         }
     }
