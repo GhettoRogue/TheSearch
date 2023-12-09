@@ -1,7 +1,11 @@
-﻿namespace TheSearch.app.VL;
+﻿using TheSearch.app.DAL.Logger;
 
-public static class ConsoleHelper
+namespace TheSearch.app.VL;
+
+internal abstract class ConsoleHelper : ILogger
 {
+    #region Print
+
     private static void PrintColorLine(string message, ConsoleColor color)
     {
         Console.ForegroundColor = color;
@@ -56,4 +60,27 @@ public static class ConsoleHelper
         Print(message);
         return Convert.ToInt32(Console.ReadLine());
     }
+
+    #endregion
+
+    #region Logger
+
+    public void LoggerInfo(string message)
+    {
+        PrintColorLine($"{DateTime.Now:g} - [{nameof(LoggerInfo).ToUpper()}] ", ConsoleColor.Blue);
+    }
+
+    public void LoggerSuccess(string message)
+    {
+        PrintColorLine($"{DateTime.Now:g} - [{nameof(LoggerSuccess).ToUpper()}] ", ConsoleColor.Green);
+    }
+
+    public void LoggerError(string message)
+    {
+        PrintColorLine($"{DateTime.Now:g} - [{nameof(LoggerError).ToUpper()}] ", ConsoleColor.Red);
+    }
+
+    #endregion
+
+    
 }
