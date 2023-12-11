@@ -93,7 +93,9 @@ public class DetectiveView
             foreach (var c in findCriminal)
             {
                 ConsoleHelper.PrintCriminal(
-                    $"[Height: {c.Height}, Weight: {c.Weight}, Nationality: {c.Nationality}]" +
+                    $"[Height: {c.Height}," +
+                    $" Weight: {c.Weight}," +
+                    $" Nationality: {c.Nationality}]" +
                     $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| " );
             }
         }
