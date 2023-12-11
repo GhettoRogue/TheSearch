@@ -1,4 +1,5 @@
 ﻿using TheSearch.app.BLL;
+using TheSearch.app.BLL.Detective;
 using TheSearch.app.DAL.Repository;
 using TheSearch.app.Models;
 
@@ -14,6 +15,24 @@ public class DetectiveView
         _detective = detective;
         _repository = repository;
     }
+    
+    private static class ConsoleConstMessages
+    {
+        public const string EnterChoice = "Enter your choice detective: ";
+        public const string ErrorChoice = "Invalid choice. Please try again.";
+        public const string ExitMessage = "Good hunting, detective.";
+        public const string Arrested = "List of arrested people:";
+        public const string CriminalsNotFound = "No criminal found by using these data. What would you like to do next?";
+        public const string CriminalsWasFound = "The criminal was found using this data: ";
+        public const string Search = "Search for a criminal:";
+        public const string ButtonToReturn = "(or press 0 to return to the menu)";
+        public const string EnterHeight = "Enter height: ";
+        public const string ErrorHeight = "Error: invalid height. Please try again.";
+        public const string EnterWeight = "Enter weight: ";
+        public const string ErrorWeight = "Error: invalid weight. Please try again.";
+        public const string EnterNationality = "Enter nationality: ";
+        public const string ErrorNationality = "Error: invalid nationality. Please try again.";
+    }
 
     public void ShowDetectiveMenu()
     {
@@ -22,7 +41,7 @@ public class DetectiveView
         do
         {
             TheSearchView.ShowMenu();
-            switch (ConsoleHelper.UserInput("Enter your choice detective: "))
+            switch (ConsoleHelper.UserInput(ConsoleConstMessages.EnterChoice))
             {
                 case "1":
                     ShowArrestedPeople(_repository.GetAll());
@@ -34,18 +53,18 @@ public class DetectiveView
                     exit = true;
                     break;
                 default:
-                    ConsoleHelper.PrintError("Invalid choice. Please try again.");
+                    ConsoleHelper.PrintError(ConsoleConstMessages.ErrorChoice);
                     break;
             }
         } while (!exit);
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.PrintSuccess("Good hunting, detective.");
+        ConsoleHelper.PrintSuccess(ConsoleConstMessages.ExitMessage);
     }
 
     private void ShowArrestedPeople(IEnumerable<Criminal> criminals)
     {
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.Print("List of arrested people:");
+        ConsoleHelper.Print(ConsoleConstMessages.Arrested);
         var arrestedPeople = _detective.GetArrestedCriminals(criminals);
         foreach (var criminal in arrestedPeople)
         {
@@ -65,12 +84,12 @@ public class DetectiveView
         if (findCriminal.Count == 0)
         {
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintWarning("No criminal found by using these data. What would you like to do next?");
+            ConsoleHelper.PrintWarning(ConsoleConstMessages.CriminalsNotFound);
         }
         else
         {
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintSuccess("The criminal was found using this data: ");
+            ConsoleHelper.PrintSuccess(ConsoleConstMessages.CriminalsWasFound);
             foreach (var c in findCriminal)
             {
                 ConsoleHelper.PrintCriminal(
@@ -83,13 +102,13 @@ public class DetectiveView
     private void SearchCriminal()
     {
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.PrintSuccess("Search for a criminal:");
-        ConsoleHelper.PrintWarning("(or press 0 to return to the menu)");
+        ConsoleHelper.PrintSuccess(ConsoleConstMessages.Search);
+        ConsoleHelper.PrintWarning(ConsoleConstMessages.ButtonToReturn);
 
         int height;
         while (true)
         {
-            ConsoleHelper.PrintLine("Enter height: ");
+            ConsoleHelper.PrintLine(ConsoleConstMessages.EnterHeight);
             int.TryParse(Console.ReadLine(), out height);
             
             if (height == 0)
@@ -100,7 +119,7 @@ public class DetectiveView
 
             if (!Validator.ValidateHeight(height))
             {
-                ConsoleHelper.PrintError("Error: invalid height. Please try again.");
+                ConsoleHelper.PrintError(ConsoleConstMessages.ErrorHeight);
                 continue;
             }
             
@@ -111,7 +130,7 @@ public class DetectiveView
         int weight;
         while (true)
         {
-            Console.Write("Enter weight: ");
+            Console.Write(ConsoleConstMessages.EnterWeight);
             int.TryParse(Console.ReadLine(), out weight);
 
             if (weight == 0)
@@ -122,7 +141,7 @@ public class DetectiveView
             
             if (!Validator.ValidateWeight(weight))
             {
-                ConsoleHelper.PrintError("Error: invalid weight. Please try again.");
+                ConsoleHelper.PrintError(ConsoleConstMessages.ErrorWeight);
                 continue;
             }
 
@@ -132,7 +151,7 @@ public class DetectiveView
         string? nationality;
         while (true)
         {
-            Console.Write("Enter nationality: ");
+            Console.Write(ConsoleConstMessages.EnterNationality);
             nationality = Console.ReadLine();
             
             
@@ -144,7 +163,7 @@ public class DetectiveView
             
             if (!Validator.ValidateNationality(nationality))
             {
-                ConsoleHelper.PrintError("Error: invalid nationality. Please try again.");
+                ConsoleHelper.PrintError(ConsoleConstMessages.ErrorNationality);
                 continue;
             }
         
