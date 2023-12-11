@@ -1,6 +1,6 @@
 ﻿using TheSearch.app.Models;
 
-namespace TheSearch.app.BLL;
+namespace TheSearch.app.BLL.Detective;
 
 public interface IDetective
 {
