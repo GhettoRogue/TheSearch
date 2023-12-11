@@ -1,7 +1,7 @@
 ﻿using TheSearch.app.DAL.Repository;
 using TheSearch.app.Models;
 
-namespace TheSearch.app.BLL;
+namespace TheSearch.app.BLL.Detective;
 
 public class Detective : IDetective
 {

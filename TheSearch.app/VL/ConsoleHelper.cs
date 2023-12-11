@@ -4,7 +4,7 @@ namespace TheSearch.app.VL;
 
 internal abstract class ConsoleHelper : ILogger
 {
-    #region Print
+    #region PrintDefaultConsole
 
     private static void PrintColorLine(string message, ConsoleColor color)
     {
@@ -63,8 +63,8 @@ internal abstract class ConsoleHelper : ILogger
 
     #endregion
 
-    #region Logger
-
+    #region PrintLogger
+    
     public void LoggerInfo(string message)
     {
         PrintColorLine($"{DateTime.Now:g} - [{nameof(LoggerInfo).ToUpper()}] ", ConsoleColor.Blue);
@@ -81,6 +81,5 @@ internal abstract class ConsoleHelper : ILogger
     }
 
     #endregion
-
     
 }
