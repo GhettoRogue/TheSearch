@@ -7,4 +7,6 @@ public static class JsonContext
     public const string NotArrested = "notArrested.json";
     
     public const string DetectiveLog = "authLog.txt";
+    
+    public const string UserAuthData = "userAuthData.json";
 }
