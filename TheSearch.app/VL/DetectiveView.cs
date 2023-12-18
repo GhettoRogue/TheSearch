@@ -1,6 +1,6 @@
 ﻿using TheSearch.app.BLL;
-using TheSearch.app.BLL.Detective;
-using TheSearch.app.DAL.Repository.Criminals;
+using TheSearch.app.IL.Interfaces.Criminal;
+using TheSearch.app.IL.Interfaces.Detective;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.VL;
