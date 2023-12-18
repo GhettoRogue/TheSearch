@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using TheSearch.app.DAL.Repository;
+using TheSearch.app.DAL.Repository.Criminals;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.DAL.Json;

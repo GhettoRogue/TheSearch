@@ -1,4 +1,4 @@
-﻿using TheSearch.app.DAL.Repository;
+﻿using TheSearch.app.DAL.Repository.Criminals;
 using TheSearch.app.Models;
 
 namespace TheSearch.app.BLL.Detective;
