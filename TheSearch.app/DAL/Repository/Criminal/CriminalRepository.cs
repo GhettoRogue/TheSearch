@@ -1,18 +1,19 @@
-﻿using TheSearch.app.Models;
+﻿using TheSearch.app.IL.Interfaces.Criminal;
+using TheSearch.app.Models;
 
-namespace TheSearch.app.DAL.Repository.Criminals;
+namespace TheSearch.app.DAL.Repository.Criminal;
 
 public class CriminalRepository : ICriminalRepository
 {
-    private readonly List<Criminal> _criminals = new();
+    private readonly List<Models.Criminal> _criminals = new();
 
-    public IEnumerable<Criminal> GetAll() => _criminals;
+    public IEnumerable<Models.Criminal> GetAll() => _criminals;
     
-    public IEnumerable<Criminal> GetOnlyArrested() => _criminals.Where(c => c.IsArrested);
+    public IEnumerable<Models.Criminal> GetOnlyArrested() => _criminals.Where(c => c.IsArrested);
     
-    public IEnumerable<Criminal> GetNotArrested() => _criminals.Where(c => !c.IsArrested);
+    public IEnumerable<Models.Criminal> GetNotArrested() => _criminals.Where(c => !c.IsArrested);
     
-    private void Add(Criminal criminal) => _criminals.Add(criminal);
+    private void Add(Models.Criminal criminal) => _criminals.Add(criminal);
     
     public void Initialize()
     {
