@@ -1,6 +1,6 @@
 ﻿using TheSearch.app.Models;
 
-namespace TheSearch.app.DAL.Repository;
+namespace TheSearch.app.DAL.Repository.Criminals;
 
 public class CriminalRepository : ICriminalRepository
 {
