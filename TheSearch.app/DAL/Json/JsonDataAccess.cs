@@ -1,17 +1,24 @@
 ﻿using System.Text.Json;
 using TheSearch.app.IL.Interfaces.Criminal;
+using TheSearch.app.IL.Interfaces.User;
 using TheSearch.app.Models;
+using TheSearch.app.Models.User;
 
 namespace TheSearch.app.DAL.Json;
 
-public class JsonDataAccess
+public class JsonDataAccess : ICriminalSerializer, IUserSerializer
 {
     private readonly ICriminalRepository _criminalRepository;
 
-    public JsonDataAccess(ICriminalRepository criminalRepository)
+    private readonly IUserRepository _userRepository;
+
+    public JsonDataAccess(ICriminalRepository criminalRepository, IUserRepository userRepository)
     {
         _criminalRepository = criminalRepository;
+        _userRepository = userRepository;
     }
+
+    #region Criminal
 
     public void SerializeAllCriminals()
     {
@@ -48,4 +55,23 @@ public class JsonDataAccess
         var json = File.ReadAllText(JsonContext.NotArrested);
         JsonSerializer.Deserialize<List<Criminal>>(json);
     }
+
+    #endregion
+
+
+    #region User
+
+    public void SerializeUser()
+    {
+        var json = JsonSerializer.Serialize(_userRepository.GetAll());
+        File.WriteAllText(JsonContext.UserAuthData, json);
+    }
+
+    public void DeserializeUser()
+    {
+        var json = File.ReadAllText(JsonContext.UserAuthData);
+        JsonSerializer.Deserialize<List<User>>(json);
+    }
+
+    #endregion
 }
