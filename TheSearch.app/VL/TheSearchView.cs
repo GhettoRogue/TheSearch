@@ -10,6 +10,14 @@ public static class TheSearchView
         Console.WriteLine("0. Exit");
         Console.WriteLine("------------------------");
     }
+
+    public static void ShowMenuLogin()
+    {
+        Console.Clear();
+        Console.WriteLine("-Welcome-");
+        Console.WriteLine("1. Login");
+        Console.WriteLine("0. Exit");
+    }
     
 }
 
