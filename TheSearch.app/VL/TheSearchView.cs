@@ -1,4 +1,7 @@
-﻿namespace TheSearch.app.VL;
+﻿using TheSearch.app.BLL.Detective;
+using TheSearch.app.DAL.Repository.Criminal;
+
+namespace TheSearch.app.VL;
 
 public static class TheSearchView
 {

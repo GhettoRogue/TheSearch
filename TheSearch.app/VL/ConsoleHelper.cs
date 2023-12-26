@@ -1,6 +1,4 @@
-﻿using TheSearch.app.DAL.Logger;
-
-namespace TheSearch.app.VL;
+﻿namespace TheSearch.app.VL;
 
 internal abstract class ConsoleHelper
 {
