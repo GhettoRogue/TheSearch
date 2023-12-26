@@ -28,7 +28,8 @@ public class DetectiveView
         public const string EnterChoiceDetective = "Enter your choice detective: ";
         public const string EnterChoiceUser = "Enter your choice user: ";
         public const string ErrorChoice = "Invalid choice. Please try again.";
-        public const string ExitMessage = "Good hunting, detective.";
+        public const string ExitMessageDetective = "Good hunting, detective.";
+        public const string ExitMessageUser = "Goodbuye, detective.";
         public const string Arrested = "List of arrested people:";
 
         public const string CriminalsNotFound =
@@ -48,6 +49,7 @@ public class DetectiveView
         public const string InvalidUserData = "Invalid credentials!";
     }
 
+
     public static void InitProject()
     {
         var exit = false;
@@ -66,7 +68,6 @@ public class DetectiveView
                     };
 
                     var auth = new DetectiveLog(new DetectiveAuth(authUser), new LogToFile());
-
                     if (auth.IsAuth(authUser))
                     {
                         var repository = new CriminalRepository();
@@ -87,7 +88,7 @@ public class DetectiveView
             }
 
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessage);
+            ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessageUser);
         } while (!exit);
     }
 
@@ -116,7 +117,7 @@ public class DetectiveView
         } while (!exit);
 
         ConsoleHelper.ClearConsole();
-        //ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessage);
+        ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessageDetective);
     }
 
     private void ShowArrestedPeople(IEnumerable<Criminal> criminals)
