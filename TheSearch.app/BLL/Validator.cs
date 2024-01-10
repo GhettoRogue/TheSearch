@@ -12,5 +12,4 @@ public static class Validator
         !string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter);
 
     #endregion
-    
 }
