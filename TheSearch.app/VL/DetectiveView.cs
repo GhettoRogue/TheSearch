@@ -149,14 +149,9 @@ public class DetectiveView
         {
             ConsoleHelper.ClearConsole();
             ConsoleHelper.PrintSuccess(DetectiveConstMessage.CriminalsWasFound);
-            foreach (var c in findCriminal)
-            {
-                ConsoleHelper.PrintCriminal(
-                    $"[Height: {c.Height}," +
-                    $" Weight: {c.Weight}," +
-                    $" Nationality: {c.Nationality}]" +
-                    $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| ");
-            }
+            findCriminal.ForEach(c => ConsoleHelper.PrintCriminal
+                ($"[Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}]" +
+                 $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| "));
         }
     }
 
