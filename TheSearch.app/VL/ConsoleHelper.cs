@@ -53,10 +53,10 @@ internal abstract class ConsoleHelper
         PrintColorLine(message, ConsoleColor.Yellow);
     }
 
-    public static int InputNumber(string message)
+    public static void InputNumber(string message)
     {
         Print(message);
-        return Convert.ToInt32(Console.ReadLine());
+        Convert.ToInt32(Console.ReadLine());
     }
 
     #endregion

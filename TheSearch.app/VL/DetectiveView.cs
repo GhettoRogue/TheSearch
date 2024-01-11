@@ -150,11 +150,11 @@ public class DetectiveView
             ConsoleHelper.ClearConsole();
             ConsoleHelper.PrintSuccess(DetectiveConstMessage.CriminalsWasFound);
             findCriminal.ForEach(c => ConsoleHelper.PrintCriminal
-                ($"[Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}]" +
-                 $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| "));
+            ($"[Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}]" +
+             $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| "));
         }
     }
-
+    
     private void SearchCriminal()
     {
         ConsoleHelper.ClearConsole();
@@ -162,6 +162,7 @@ public class DetectiveView
         ConsoleHelper.PrintWarning(DetectiveConstMessage.ButtonToReturn);
 
         int height;
+       
         while (true)
         {
             ConsoleHelper.PrintLine(DetectiveConstMessage.EnterHeight);
@@ -181,6 +182,7 @@ public class DetectiveView
 
             break;
         }
+        
 
         int weight;
         while (true)
