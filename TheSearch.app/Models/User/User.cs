@@ -1,8 +1,8 @@
 ﻿namespace TheSearch.app.Models.User;
 
-public class User
+public abstract class User
 {
-    public string? Login { get; set; }
+    public required string? Login { get; init; }
     
-    public string? Password { get; set; }
+    public required string? Password { get; init; }
 }
