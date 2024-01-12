@@ -2,5 +2,5 @@
 
 public interface IAuth
 {
-    public bool IsAuth(Models.User.User user);
+    public bool IsUserIn(Models.User.User user);
 }

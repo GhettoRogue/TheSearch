@@ -15,7 +15,7 @@ public class DetectiveView
     private readonly IDetective _detective;
     private readonly ICriminalRepository _repository;
 
-    private DetectiveView(IDetective detective, ICriminalRepository repository)
+    public DetectiveView(IDetective detective, ICriminalRepository repository)
     {
         _detective = detective;
         _repository = repository;
@@ -48,8 +48,7 @@ public class DetectiveView
         public const string UserPass = "Enter password: ";
         public const string InvalidUserData = "Invalid credentials!";
     }
-
-
+    
     public static void InitProject()
     {
         var exit = false;
@@ -92,7 +91,7 @@ public class DetectiveView
         } while (!exit);
     }
 
-    private void ShowDetectiveMenu()
+    public void ShowDetectiveMenu()
     {
         ConsoleHelper.ClearConsole();
         var exit = false;
