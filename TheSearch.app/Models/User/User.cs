@@ -1,6 +1,6 @@
 ﻿namespace TheSearch.app.Models.User;
 
-public abstract class User
+public record User
 {
     public required string? Login { get; init; }
     
