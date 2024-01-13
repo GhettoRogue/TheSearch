@@ -21,7 +21,6 @@ public class DetectiveView
         _repository = repository;
     }
     
-    
     public static void InitProject()
     {
         var exit = false;
@@ -63,11 +62,10 @@ public class DetectiveView
                     }
                     else
                     {
-    
                         Console.WriteLine("Invalid login or password");
                         Environment.Exit(1);
                     }
-                    
+
                     break;
                 case "0":
                     exit = true;
@@ -144,7 +142,14 @@ public class DetectiveView
              $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| "));
         }
     }
-    
+    /*private List<Criminal> FindCriminal(int height, int weight, string? nationality)
+    {
+        var findCriminal = _detective.FindCriminalByParameters(height, weight, nationality).ToList();
+        if (!findCriminal.Any()) throw new ArgumentNullException(); 
+        
+        return findCriminal;
+    }*/
+
     private void SearchCriminal()
     {
         ConsoleHelper.ClearConsole();
@@ -152,7 +157,7 @@ public class DetectiveView
         ConsoleHelper.PrintWarning(DetectiveMessages.ButtonToReturn);
 
         int height;
-       
+
         while (true)
         {
             ConsoleHelper.PrintLine(DetectiveMessages.EnterHeight);
@@ -172,7 +177,7 @@ public class DetectiveView
 
             break;
         }
-        
+
 
         int weight;
         while (true)
