@@ -3,10 +3,10 @@ using TheSearch.app.BLL.Authenticate.UserAuth;
 using TheSearch.app.BLL.Detective;
 using TheSearch.app.DAL.Logger;
 using TheSearch.app.DAL.Repository.Criminal;
+using TheSearch.app.DAL.Repository.User;
 using TheSearch.app.IL.Interfaces.Criminal;
 using TheSearch.app.IL.Interfaces.Detective;
 using TheSearch.app.Models;
-using TheSearch.app.Models.User;
 
 namespace TheSearch.app.VL;
 
@@ -15,39 +15,12 @@ public class DetectiveView
     private readonly IDetective _detective;
     private readonly ICriminalRepository _repository;
 
-    public DetectiveView(IDetective detective, ICriminalRepository repository)
+    private DetectiveView(IDetective detective, ICriminalRepository repository)
     {
         _detective = detective;
         _repository = repository;
     }
-
-    private static class DetectiveConstMessage
-    {
-        public const int ExitFromMenu = 0;
-
-        public const string EnterChoiceDetective = "Enter your choice detective: ";
-        public const string EnterChoiceUser = "Enter your choice user: ";
-        public const string ErrorChoice = "Invalid choice. Please try again.";
-        public const string ExitMessageDetective = "Good hunting, detective.";
-        public const string ExitMessageUser = "Goodbuye, detective.";
-        public const string Arrested = "List of arrested people:";
-
-        public const string CriminalsNotFound =
-            "No criminal found by using these data. What would you like to do next?";
-
-        public const string CriminalsWasFound = "The criminal was found using this data: ";
-        public const string Search = "Search for a criminal:";
-        public const string ButtonToReturn = "(or press 0 to return to the menu)";
-        public const string EnterHeight = "Enter height: ";
-        public const string ErrorHeight = "Error: invalid height. Please try again.";
-        public const string EnterWeight = "Enter weight: ";
-        public const string ErrorWeight = "Error: invalid weight. Please try again.";
-        public const string EnterNationality = "Enter nationality: ";
-        public const string ErrorNationality = "Error: invalid nationality. Please try again.";
-        public const string UserLogin = "Enter login: ";
-        public const string UserPass = "Enter password: ";
-        public const string InvalidUserData = "Invalid credentials!";
-    }
+    
     
     public static void InitProject()
     {
@@ -56,49 +29,67 @@ public class DetectiveView
         {
             TheSearchView.ShowMenuLogin();
 
-            switch (ConsoleHelper.UserInput(DetectiveConstMessage.EnterChoiceUser))
+            switch (ConsoleHelper.UserInput(DetectiveMessages.EnterChoiceUser))
             {
                 case "1":
                     ConsoleHelper.ClearConsole();
-                    var authUser = new User()
-                    {
-                        Login = ConsoleHelper.UserInput(DetectiveConstMessage.UserLogin),
-                        Password = ConsoleHelper.UserInput(DetectiveConstMessage.UserPass)
-                    };
 
-                    var auth = new DetectiveLog(new DetectiveAuth(authUser), new LogToFile());
-                    if (auth.IsAuth(authUser))
-                    {
-                        var repository = new CriminalRepository();
-                        var detective = new Detective(repository);
-                        repository.Initialize();
+                    var userRepository = new UserRepository();
+                    userRepository.Initialize();
 
-                        var detectiveView = new DetectiveView(detective, repository);
-                        detectiveView.ShowDetectiveMenu();
+                    var registeredUser = userRepository.GetAll().ToList();
+
+                    var inputLogin = ConsoleHelper.UserInput(DetectiveMessages.UserLogin);
+                    var inputPass = ConsoleHelper.UserInput(DetectiveMessages.UserPass);
+                    var authUser = registeredUser.FirstOrDefault(u => u.Login == inputLogin && u.Password == inputPass);
+                    if (authUser != null)
+                    {
+                        var auth = new DetectiveLog(new DetectiveAuth(authUser), new LogToFile());
+                        if (auth.IsAuth(authUser))
+                        {
+                            var repository = new CriminalRepository();
+                            var detective = new Detective(repository);
+                            repository.Initialize();
+
+                            var detectiveView = new DetectiveView(detective, repository);
+                            detectiveView.ShowDetectiveMenu();
+                        }
+                        else
+                        {
+                            auth.IsAuth(authUser);
+                            Console.WriteLine("Invalid login or password");
+                            Environment.Exit(1);
+                        }
                     }
-
+                    else
+                    {
+    
+                        Console.WriteLine("Invalid login or password");
+                        Environment.Exit(1);
+                    }
+                    
                     break;
                 case "0":
                     exit = true;
                     break;
                 default:
-                    ConsoleHelper.PrintError(DetectiveConstMessage.InvalidUserData);
+                    ConsoleHelper.PrintError(DetectiveMessages.InvalidUserData);
                     break;
             }
 
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessageUser);
+            ConsoleHelper.PrintSuccess(DetectiveMessages.ExitMessageUser);
         } while (!exit);
     }
 
-    public void ShowDetectiveMenu()
+    private void ShowDetectiveMenu()
     {
         ConsoleHelper.ClearConsole();
         var exit = false;
         do
         {
             TheSearchView.ShowMenu();
-            switch (ConsoleHelper.UserInput(DetectiveConstMessage.EnterChoiceDetective))
+            switch (ConsoleHelper.UserInput(DetectiveMessages.EnterChoiceDetective))
             {
                 case "1":
                     ShowArrestedPeople(_repository.GetAll());
@@ -110,19 +101,19 @@ public class DetectiveView
                     exit = true;
                     break;
                 default:
-                    ConsoleHelper.PrintError(DetectiveConstMessage.ErrorChoice);
+                    ConsoleHelper.PrintError(DetectiveMessages.ErrorChoice);
                     break;
             }
         } while (!exit);
 
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.PrintSuccess(DetectiveConstMessage.ExitMessageDetective);
+        ConsoleHelper.PrintSuccess(DetectiveMessages.ExitMessageDetective);
     }
 
     private void ShowArrestedPeople(IEnumerable<Criminal> criminals)
     {
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.Print(DetectiveConstMessage.Arrested);
+        ConsoleHelper.Print(DetectiveMessages.Arrested);
         var arrestedPeople = _detective.GetArrestedCriminals(criminals);
         foreach (var criminal in arrestedPeople)
         {
@@ -142,12 +133,12 @@ public class DetectiveView
         if (findCriminal.Count == 0)
         {
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintWarning(DetectiveConstMessage.CriminalsNotFound);
+            ConsoleHelper.PrintWarning(DetectiveMessages.CriminalsNotFound);
         }
         else
         {
             ConsoleHelper.ClearConsole();
-            ConsoleHelper.PrintSuccess(DetectiveConstMessage.CriminalsWasFound);
+            ConsoleHelper.PrintSuccess(DetectiveMessages.CriminalsWasFound);
             findCriminal.ForEach(c => ConsoleHelper.PrintCriminal
             ($"[Height: {c.Height}," + $" Weight: {c.Weight}," + $" Nationality: {c.Nationality}]" +
              $" - [{c.FirstName} {c.LastName}] - |IsArrested:{c.IsArrested}| "));
@@ -157,17 +148,17 @@ public class DetectiveView
     private void SearchCriminal()
     {
         ConsoleHelper.ClearConsole();
-        ConsoleHelper.PrintSuccess(DetectiveConstMessage.Search);
-        ConsoleHelper.PrintWarning(DetectiveConstMessage.ButtonToReturn);
+        ConsoleHelper.PrintSuccess(DetectiveMessages.Search);
+        ConsoleHelper.PrintWarning(DetectiveMessages.ButtonToReturn);
 
         int height;
        
         while (true)
         {
-            ConsoleHelper.PrintLine(DetectiveConstMessage.EnterHeight);
+            ConsoleHelper.PrintLine(DetectiveMessages.EnterHeight);
             int.TryParse(Console.ReadLine(), out height);
 
-            if (height == DetectiveConstMessage.ExitFromMenu)
+            if (height == DetectiveMessages.ExitFromMenu)
             {
                 ConsoleHelper.ClearConsole();
                 return;
@@ -175,7 +166,7 @@ public class DetectiveView
 
             if (!Validator.ValidateHeight(height))
             {
-                ConsoleHelper.PrintError(DetectiveConstMessage.ErrorHeight);
+                ConsoleHelper.PrintError(DetectiveMessages.ErrorHeight);
                 continue;
             }
 
@@ -186,10 +177,10 @@ public class DetectiveView
         int weight;
         while (true)
         {
-            Console.Write(DetectiveConstMessage.EnterWeight);
+            Console.Write(DetectiveMessages.EnterWeight);
             int.TryParse(Console.ReadLine(), out weight);
 
-            if (weight == DetectiveConstMessage.ExitFromMenu)
+            if (weight == DetectiveMessages.ExitFromMenu)
             {
                 ConsoleHelper.ClearConsole();
                 return;
@@ -197,7 +188,7 @@ public class DetectiveView
 
             if (!Validator.ValidateWeight(weight))
             {
-                ConsoleHelper.PrintError(DetectiveConstMessage.ErrorWeight);
+                ConsoleHelper.PrintError(DetectiveMessages.ErrorWeight);
                 continue;
             }
 
@@ -207,10 +198,10 @@ public class DetectiveView
         string? nationality;
         while (true)
         {
-            Console.Write(DetectiveConstMessage.EnterNationality);
+            Console.Write(DetectiveMessages.EnterNationality);
             nationality = Console.ReadLine();
 
-            if (nationality == DetectiveConstMessage.ExitFromMenu.ToString())
+            if (nationality == DetectiveMessages.ExitFromMenu.ToString())
             {
                 ConsoleHelper.ClearConsole();
                 return;
@@ -218,7 +209,7 @@ public class DetectiveView
 
             if (!Validator.ValidateNationality(nationality))
             {
-                ConsoleHelper.PrintError(DetectiveConstMessage.ErrorNationality);
+                ConsoleHelper.PrintError(DetectiveMessages.ErrorNationality);
                 continue;
             }
 
