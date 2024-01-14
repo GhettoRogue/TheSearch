@@ -4,5 +4,5 @@ public interface IUserSerializer
 {
     void SerializeUser();
 
-    void DeserializeUser();
+    IEnumerable<Models.User.User>? DeserializeUser();
 }

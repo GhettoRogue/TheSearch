@@ -3,6 +3,7 @@ using TheSearch.app.IL.Interfaces.Criminal;
 using TheSearch.app.IL.Interfaces.User;
 using TheSearch.app.Models;
 using TheSearch.app.Models.User;
+using TheSearch.app.VL;
 
 namespace TheSearch.app.DAL.Json;
 
@@ -67,10 +68,18 @@ public class JsonDataAccess : ICriminalSerializer, IUserSerializer
         File.WriteAllText(JsonContext.UserAuthData, json);
     }
 
-    public void DeserializeUser()
+    public IEnumerable<User>? DeserializeUser()
     {
-        var json = File.ReadAllText(JsonContext.UserAuthData);
-        JsonSerializer.Deserialize<List<User>>(json);
+        try
+        {
+            var json = File.ReadAllText(JsonContext.UserAuthData);
+            return JsonSerializer.Deserialize<IEnumerable<User>>(json);
+        }
+        catch (ArgumentNullException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            throw;
+        }
     }
 
     #endregion
