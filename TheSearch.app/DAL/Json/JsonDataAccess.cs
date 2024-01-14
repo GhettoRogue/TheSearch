@@ -39,22 +39,22 @@ public class JsonDataAccess : ICriminalSerializer, IUserSerializer
         File.WriteAllText(JsonContext.NotArrested, json);
     }
 
-    public void DeserializeAllCriminals()
+    public IEnumerable<Criminal>? DeserializeAllCriminals()
     {
         var json = File.ReadAllText(JsonContext.Criminals);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
+        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
     }
 
-    public void DeserializeOnlyArrested()
+    public IEnumerable<Criminal>? DeserializeOnlyArrested()
     {
         var json = File.ReadAllText(JsonContext.Arrested);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
+        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
     }
 
-    public void DeserializeNotArrested()
+    public IEnumerable<Criminal>? DeserializeNotArrested()
     {
         var json = File.ReadAllText(JsonContext.NotArrested);
-        JsonSerializer.Deserialize<List<Criminal>>(json);
+        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
     }
 
     #endregion

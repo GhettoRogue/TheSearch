@@ -8,9 +8,9 @@ public interface ICriminalSerializer
 
     void SerializeNotArrestedCriminals();
 
-    void DeserializeAllCriminals();
+    IEnumerable<Models.Criminal>? DeserializeAllCriminals();
 
-    void DeserializeOnlyArrested();
+    IEnumerable<Models.Criminal>? DeserializeOnlyArrested();
 
-    void DeserializeNotArrested();
+    IEnumerable<Models.Criminal>? DeserializeNotArrested();
 }
