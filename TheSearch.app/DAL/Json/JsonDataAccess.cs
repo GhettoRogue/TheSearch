@@ -41,20 +41,44 @@ public class JsonDataAccess : ICriminalSerializer, IUserSerializer
 
     public IEnumerable<Criminal>? DeserializeAllCriminals()
     {
-        var json = File.ReadAllText(JsonContext.Criminals);
-        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        try
+        {
+            var json = File.ReadAllText(JsonContext.Criminals);
+            return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        }
+        catch (ArgumentNullException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            throw;
+        }
     }
 
     public IEnumerable<Criminal>? DeserializeOnlyArrested()
     {
-        var json = File.ReadAllText(JsonContext.Arrested);
-        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        try
+        {
+            var json = File.ReadAllText(JsonContext.Arrested);
+            return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        }
+        catch (ArgumentNullException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            throw;
+        }
     }
 
     public IEnumerable<Criminal>? DeserializeNotArrested()
     {
-        var json = File.ReadAllText(JsonContext.NotArrested);
-        return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        try
+        {
+            var json = File.ReadAllText(JsonContext.NotArrested);
+            return JsonSerializer.Deserialize<IEnumerable<Criminal>>(json);
+        }
+        catch (ArgumentNullException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            throw;
+        }
     }
 
     #endregion
