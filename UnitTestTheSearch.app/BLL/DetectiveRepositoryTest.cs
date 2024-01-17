@@ -8,7 +8,7 @@ namespace UnitTestTheSearch.app.BLL;
 public class DetectiveRepositoryTest
 {
     [Fact]
-    public void FindCriminalByParameters_Return_Test_Positive()
+    public void FindCriminalByParameters_Return_Good()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
         var detective = new DetectiveRepository(fakeRepository);
@@ -32,16 +32,16 @@ public class DetectiveRepositoryTest
 
         Assert.Single(result);
     }
-    
+
     [Fact]
-    public void FindCriminalByParameters_Return_Test_Negative()
+    public void FindCriminalByParameters_Return_Negative()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
         var detective = new DetectiveRepository(fakeRepository);
 
         A.CallTo(() => fakeRepository
                 .GetAll())
-                .Returns(new List<Criminal>());
+            .Returns(new List<Criminal>());
 
         var result = detective.FindCriminalByParameters(-220, -190, "");
 
