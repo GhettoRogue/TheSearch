@@ -1,6 +1,6 @@
 ﻿namespace TheSearch.app.IL.Interfaces.Criminal;
 
-public interface IUseSerializer
+public interface ICriminalSerializer
 {
     void SerializeAllCriminals();
 
