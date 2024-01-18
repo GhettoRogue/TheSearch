@@ -5,7 +5,7 @@ using TheSearch.app.VL;
 
 namespace TheSearch.app.DAL.Json;
 
-public class JsonCriminalDataAccess : IUseSerializer
+public class JsonCriminalDataAccess : ICriminalSerializer
 {
     private readonly ICriminalRepository _criminalRepository;
 
