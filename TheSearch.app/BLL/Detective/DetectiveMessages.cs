@@ -7,13 +7,14 @@ public static class DetectiveMessages
     public const string EnterChoiceDetective = "Enter your choice detective: ";
     public const string EnterChoiceUser = "Enter your choice user: ";
     public const string ErrorChoice = "Invalid choice. Please try again.";
+    public const string BackToTheMenu = "Press any botton to back to the menu.";
     public const string ExitMessageDetective = "Good hunting, detective.";
     public const string ExitMessageUser = "Goodbuye, detective.";
-    public const string Arrested = "List of arrested people:";
+    public const string Arrested = "List of arrested criminals:";
 
     public const string CriminalsNotFound =
-        "No criminal found by using these data. What would you like to do next?";
-
+        "No criminal found by using these data. Press any botton to back to the menu.";
+    
     public const string CriminalsWasFound = "The criminal was found using this data: ";
     public const string Search = "Search for a criminal:";
     public const string ButtonToReturn = "(or press 0 to return to the menu)";

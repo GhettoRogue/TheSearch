@@ -5,13 +5,13 @@ using TheSearch.app.Models;
 
 namespace UnitTestTheSearch.app.BLL;
 
-public class DetectiveRepositoryTest
+public class DetectiveToolsTest
 {
     [Fact]
     public void FindCriminalByParameters_Return_Good()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
-        var detective = new DetectiveRepository(fakeRepository);
+        var detective = new DetectiveTools(fakeRepository);
 
         A.CallTo(() => fakeRepository
                 .GetAll())
@@ -37,7 +37,7 @@ public class DetectiveRepositoryTest
     public void FindCriminalByParameters_Return_Negative()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
-        var detective = new DetectiveRepository(fakeRepository);
+        var detective = new DetectiveTools(fakeRepository);
 
         A.CallTo(() => fakeRepository
                 .GetAll())

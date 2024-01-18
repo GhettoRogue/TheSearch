@@ -35,6 +35,9 @@ public class DetectiveView
                 default:
                     ConsoleHelper.ClearConsole();
                     ConsoleHelper.PrintError(DetectiveMessages.ErrorChoice);
+                    ConsoleHelper.PrintWarning(DetectiveMessages.BackToTheMenu);
+                    Console.ReadKey();
+                    ConsoleHelper.ClearConsole();
                     break;
             }
         } while (!exit);
@@ -58,6 +61,11 @@ public class DetectiveView
                 $" {CriminalMessages.Height} {criminal.Height}," +
                 $" {CriminalMessages.Weight} {criminal.Weight}," +
                 $" {CriminalMessages.Nationality} {criminal.Nationality}"));
+
+            ConsoleHelper.PrintWarning(DetectiveMessages.BackToTheMenu);
+
+            Console.ReadKey();
+            ConsoleHelper.ClearConsole();
         }
         catch (ArgumentNullException ex)
         {
@@ -76,6 +84,8 @@ public class DetectiveView
         {
             ConsoleHelper.ClearConsole();
             ConsoleHelper.PrintWarning(DetectiveMessages.CriminalsNotFound);
+            Console.ReadKey();
+            ConsoleHelper.ClearConsole();
         }
         else
         {
@@ -86,6 +96,9 @@ public class DetectiveView
              $" {CriminalMessages.Weight} {c.Weight}," +
              $" {CriminalMessages.Nationality} {c.Nationality}]" +
              $" - [{c.FirstName} {c.LastName}] - |{CriminalMessages.IsArrested}{c.IsArrested}| "));
+            ConsoleHelper.PrintWarning(DetectiveMessages.BackToTheMenu);
+            Console.ReadKey();
+            ConsoleHelper.ClearConsole();
         }
     }
 
