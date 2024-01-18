@@ -2,7 +2,7 @@
 
 public interface ILoggerMessage
 {
-    public void LoggerSuccess(string message);
+    void LoggerSuccess(string message);
     
-    public void LoggerError(string message);
+    void LoggerError(string message);
 }

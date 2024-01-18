@@ -7,9 +7,9 @@ namespace TheSearch.app.VL;
 
 public class DetectiveView
 {
-    private readonly IUseSerializer _serializer;
+    private readonly ICriminalSerializer _serializer;
 
-    internal DetectiveView(IUseSerializer serializer)
+    internal DetectiveView(ICriminalSerializer serializer)
     {
         _serializer = serializer;
     }
@@ -72,7 +72,7 @@ public class DetectiveView
                 .DeserializeAllCriminals() ?? throw new InvalidOperationException())
             .Where(c => c.Height == height && c.Weight == weight && c.Nationality == nationality)
             .ToList();
-        if (findCriminal.Count == 0)
+        if (!findCriminal.Any())
         {
             ConsoleHelper.ClearConsole();
             ConsoleHelper.PrintWarning(DetectiveMessages.CriminalsNotFound);
