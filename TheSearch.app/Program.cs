@@ -6,6 +6,6 @@ public abstract class Program
 {
     public static void Main()
     {
-        ConsoleView.InitProject();
+        AppStarter.InitProject();
     }
 }
