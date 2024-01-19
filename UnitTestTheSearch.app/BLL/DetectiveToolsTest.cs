@@ -11,7 +11,8 @@ public class DetectiveToolsTest
     public void FindCriminalByParameters_Return_Good()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
-        var detective = new DetectiveTools(fakeRepository);
+        var fakeData = A.Fake<ICriminalSerializer>();
+        var detective = new DetectiveTools(fakeRepository, fakeData);
 
         A.CallTo(() => fakeRepository
                 .GetAll())
@@ -37,7 +38,8 @@ public class DetectiveToolsTest
     public void FindCriminalByParameters_Return_Negative()
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
-        var detective = new DetectiveTools(fakeRepository);
+        var fakeData = A.Fake<ICriminalSerializer>();
+        var detective = new DetectiveTools(fakeRepository, fakeData);
 
         A.CallTo(() => fakeRepository
                 .GetAll())
