@@ -45,8 +45,9 @@ public class JsonCriminalDataAccess : ICriminalSerializer
         catch (ArgumentNullException ex)
         {
             ConsoleHelper.PrintError(ex.Message);
-            throw;
         }
+
+        throw new InvalidOperationException();
     }
 
     public IEnumerable<Criminal>? DeserializeOnlyArrested()
@@ -59,8 +60,9 @@ public class JsonCriminalDataAccess : ICriminalSerializer
         catch (ArgumentNullException ex)
         {
             ConsoleHelper.PrintError(ex.Message);
-            throw;
         }
+
+        throw new InvalidOperationException();
     }
 
     public IEnumerable<Criminal>? DeserializeNotArrested()
@@ -73,8 +75,9 @@ public class JsonCriminalDataAccess : ICriminalSerializer
         catch (ArgumentNullException ex)
         {
             ConsoleHelper.PrintError(ex.Message);
-            throw;
         }
+
+        throw new InvalidOperationException();
     }
 
     #endregion
