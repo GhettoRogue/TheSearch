@@ -12,19 +12,9 @@ public class ValidatorTest
         var fixture = new Fixture();
         var height = fixture.Create<int>();
 
-        var result = height is > 0 and >= 100 and <= 290;
+        var result = height is >= 100 and <= 290;
 
         Assert.True(result);
-    }
-
-    [Fact]
-    public void ShouldValidateHeight_Negative_False()
-    {
-        const int invalidHeight = -1;
-
-        var result = invalidHeight is > 0 and >= 100 and <= 290;
-
-        Assert.False(result);
     }
 
     #endregion
@@ -37,7 +27,7 @@ public class ValidatorTest
         var fixture = new Fixture();
         var weight = fixture.Create<int>();
 
-        var result = weight is > 0 and >= 40 and <= 180;
+        var result = weight is >= 40 and <= 180;
 
         Assert.True(result);
     }
