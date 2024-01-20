@@ -1,4 +1,4 @@
-﻿# TheSearch
+# TheSearch
 
 ## Описание:
 
