@@ -8,7 +8,7 @@ namespace TheSearch.app.BLL.Detective;
 public class DetectiveTools : IDetective
 {
     private readonly ICriminalRepository _repository;
-    
+
     private readonly ICriminalSerializer _serializer;
 
     public DetectiveTools(ICriminalRepository repository, ICriminalSerializer serializer)
@@ -55,8 +55,8 @@ public class DetectiveTools : IDetective
             throw;
         }
     }
-    
-    private void FindCriminal(int height, int weight, string? nationality)
+
+    public void FindCriminal(int height, int weight, string? nationality)
     {
         var findCriminal = (_serializer
                 .DeserializeAllCriminals() ?? throw new InvalidOperationException())
@@ -84,7 +84,7 @@ public class DetectiveTools : IDetective
         }
     }
 
-    internal void SearchCriminal()
+    public void SearchCriminal()
     {
         ConsoleHelper.ClearConsole();
         ConsoleHelper.PrintSuccess(DetectiveMessages.Search);
