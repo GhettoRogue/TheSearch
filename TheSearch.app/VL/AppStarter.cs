@@ -20,41 +20,24 @@ public static class AppStarter
                 case "1":
                     ConsoleHelper.ClearConsole();
 
-                    var jsonCriminalData = new JsonCriminalDataAccess(new CriminalRepository());
-                    var jsonUserData = new JsonUserDataAccess(new UserRepository());
-
-                    var users = jsonUserData.DeserializeUser();
-                    if (users is null)
-                    {
-                        ConsoleHelper.PrintError(DetectiveMessages.InvalidUserData);
-                        return;
-                    }
-
                     var inputLogin = ConsoleHelper.UserInput(DetectiveMessages.UserLogin);
                     var inputPassword = ConsoleHelper.UserInput(DetectiveMessages.UserPass);
 
-                    var authUser =
-                        users.FirstOrDefault(u => u.Login == inputLogin && u.Password == inputPassword);
-                    var auth = new DetectiveLog(new LogToFile());
-                    if (auth.IsAuth(authUser))
-                    {
-                        var repository = new CriminalRepository();
-                        var detectiveTools = new DetectiveTools(repository, jsonCriminalData);
-                        var detectiveView = new DetectiveView(detectiveTools);
+                    var jsonUserData = new JsonUserDataAccess(new UserRepository());
+                    var auth = new DetectiveLog(new LogToFile(), jsonUserData);
+                    
+                    auth.IsAuth(inputLogin, inputPassword);
+                    
+                    var repository = new CriminalRepository();
+                    var jsonCriminalData = new JsonCriminalDataAccess(repository);
+                    var detectiveTools = new DetectiveTools(repository, jsonCriminalData);
+                    var detectiveView = new DetectiveView(detectiveTools);
 
-                        detectiveView.ShowDetectiveMenu();
-                    }
-                    else
-                    {
-                        ConsoleHelper.PrintError(DetectiveMessages.InvalidUserData);
-                    }
-
+                    detectiveView.ShowDetectiveMenu();
+                    
                     break;
                 case "0":
                     exit = true;
-                    break;
-                default:
-                    ConsoleHelper.PrintError(DetectiveMessages.InvalidUserData);
                     break;
             }
 
