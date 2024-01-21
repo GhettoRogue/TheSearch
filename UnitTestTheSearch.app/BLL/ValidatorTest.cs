@@ -42,8 +42,18 @@ public class ValidatorTest
         const string nationality = "Russian";
 
         var result = !string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter);
-               
+
         Assert.True(result);
+    }
+
+    [Fact]
+    public void ShouldValidateNationality_False()
+    {
+        const string nationality = "";
+
+        var result = !string.IsNullOrEmpty(nationality) && nationality.All(char.IsLetter);
+
+        Assert.False(result);
     }
 
     #endregion
