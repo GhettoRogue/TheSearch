@@ -2,8 +2,8 @@
 
 public abstract class CriminalFactory
 {
-    public static Criminal CreateCriminal(string firstName, string lastName, int height, int weight,
-        string nationality, bool isArrested)
+    public static Criminal CreateCriminal(string? firstName, string? lastName, int height, int weight,
+        string? nationality, bool isArrested)
     {
         return new Criminal
         {
