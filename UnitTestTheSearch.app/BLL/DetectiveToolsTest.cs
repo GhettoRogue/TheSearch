@@ -12,8 +12,7 @@ public class DetectiveToolsTest
     {
         var fakeRepository = A.Fake<ICriminalRepository>();
         var fakeData = A.Fake<ICriminalSerializer>();
-        var detective = new DetectiveTools(fakeRepository, fakeData);
-
+        var fakeDetective = new DetectiveTools(fakeRepository, fakeData);
         A.CallTo(() => fakeRepository
                 .GetAll())
             .Returns(new List<Criminal>()
@@ -29,7 +28,7 @@ public class DetectiveToolsTest
                 }
             });
 
-        var result = detective.FindCriminalByParameters(220, 190, "Russian");
+        var result = fakeDetective.FindCriminalByParameters(220, 190, "Russian");
 
         Assert.Single(result);
     }
