@@ -1,17 +1,15 @@
-﻿using TheSearch.app.BLL;
-using TheSearch.app.BLL.Criminal;
-using TheSearch.app.BLL.Detective;
-using TheSearch.app.IL.Interfaces.Criminal;
+﻿using TheSearch.app.BLL.Detective;
+using TheSearch.app.IL.Interfaces.Detective;
 
 namespace TheSearch.app.VL;
 
 public class DetectiveView
 {
-    private readonly DetectiveTools _detectiveTools;
-
-    public DetectiveView(DetectiveTools detectiveTools)
+    private readonly IDetective _detective;
+    
+    public DetectiveView(IDetective detective)
     {
-        _detectiveTools = detectiveTools;
+        _detective = detective;
     }
 
     internal void ShowDetectiveMenu()
@@ -24,10 +22,10 @@ public class DetectiveView
             switch (ConsoleHelper.UserInput(DetectiveMessages.EnterChoiceDetective))
             {
                 case "1":
-                    _detectiveTools.GetArrestedPeople();
+                    _detective.GetArrestedPeople();
                     break;
                 case "2":
-                    _detectiveTools.SearchCriminal();
+                    _detective.SearchCriminal();
                     break;
                 case "0":
                     exit = true;
