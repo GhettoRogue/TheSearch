@@ -26,10 +26,9 @@ public class JsonDataAccessDeserialize
         const string userLoginTest = "sherlock";
 
         var usersJson = File.ReadAllText(pathTest);
-        var result = JsonSerializer.Deserialize<IEnumerable<User>>(usersJson)!.ToList();
+        var result = (JsonSerializer.Deserialize<IEnumerable<User>>(usersJson) ?? throw new InvalidOperationException())
+            .ToList();
 
-        Assert.NotEmpty(result);
-        Assert.True(result.Count >= 1);
         Assert.Contains(result, u => u.Login == userLoginTest);
     }
 }
