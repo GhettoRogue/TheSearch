@@ -52,7 +52,6 @@ public class DetectiveTools : IDetective
         catch (ArgumentNullException ex)
         {
             ConsoleHelper.PrintError(ex.Message);
-            throw;
         }
     }
 
