@@ -27,4 +27,5 @@ public static class DetectiveMessages
     public const string UserLogin = "Enter login: ";
     public const string UserPass = "Enter password: ";
     public const string InvalidUserData = "Invalid credentials!";
+    public const string UserIsNotExist = "User is not exist!";
 }
