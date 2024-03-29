@@ -1,36 +1,36 @@
 # TheSearch
 
-## Описание:
+## Description:
 
-Консольное приложение для поиска преступников.
+Console application for searching for criminals.
 
-## Возможности:
+## Features:
 
-- Поиск данных по параметрам (рост, вес, национальность).
-- Просмотр и изминение списков данных.
-- Аутентификация пользователя в приложении.
-- Логирование данных пользователя в файл.
-- Сериализация и десериализация данных в JSON.
-- Методы поиска и фильтрация данных через LINQ запросы.
-- Базовая валидация вводимых данных, обработка исключений.
-- Тестирование методов программы в отдельном проекте.
-- Консольный интерфейс.
+- Search data by parameters (height, weight, nationality).
+- View and edit data lists.
+- User authentication in the application.
+- Logging user data to a file.
+- Serialization and deserialization of data in JSON.
+- Search methods and data filtering via LINQ queries.
+- Basic validation of input data, exception handling.
+- Testing of program methods in a separate project.
+- Console interface.
 
-## Внедрение рекомендуемых технологий:
-- Использование SOLID принципов:
-    - Разделение на слои (BLL, DAL, Models, VL, IL)
-    - Использование интерфейсов
-    - Возможность расширения программы
-- Использование паттернов проектирования:
+## Implementation of recommended technologies:
+- Use of SOLID principles:
+    - Separation into layers (BLL, DAL, Models, VL, IL)
+    - Use of interfaces
+    - Ability to extend the program
+- Use of design patterns:
     - Factory method
     - Repository
-- Парадигмы ООП.
+- OOP paradigms.
 
-## Остальная информация:
-- Язык программирования:
+## Other information:
+- Programming Language:
     - С#
-- Библиотеки для тестирования:
+- Testing libraries:
     - FakeItEasy
     - AutoFixture
-## Диаграмма классов приложения:
+## Application class diagram:
 ![class_diagram.svg](class_diagram.svg)
